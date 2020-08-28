@@ -1,0 +1,1 @@
+//detailed information about a particular state

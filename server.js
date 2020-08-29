@@ -42,18 +42,16 @@ app.get('/', (req, res) => {
 
 
 const authRoutes = require('./routes/auth-routes')
-app.use('/api/auth', authRoutes)
-<<<<<<< HEAD
-const stateRoutes = require('./routes/user-states')
-app.use('/api/stats', stateRoutes)
+app.use('/auth', authRoutes)
+
 const userRoutes = require('./routes/user-routes')
-app.use('/api/user', userRoutes)
-=======
-// const stateRoutes = require('./routes/state-routes')
-// app.use('/api/stats', stateRoutes)
+app.use('/user', userRoutes)
+
 const userStatesRouter = require('./routes/user-states');
 app.use('/user/stats', userStatesRouter);
->>>>>>> aee5d145e5ea26515813a4a6fe4e8cfcfc99ee1f
+
+const statsRouter = require('./routes/stats-routes')
+app.use('/stats', statsRouter)
 
 //Error handlers
 app.use('*', (req, res) => {

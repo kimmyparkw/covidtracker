@@ -6,7 +6,7 @@ const userStatesController = {
         .then((userStates) => {
             res.json({
                 selectedStates: userStates,
-                // stateTotals: res.locals.covidData,
+                stateTotals: res.locals.usTotals,
                 
             })
         })

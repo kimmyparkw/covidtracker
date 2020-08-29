@@ -7,24 +7,25 @@ const usersController = require('../controllers/users-controller')
 //POST /auth/register - User submits a new user profile
 authRouter.post('/register', usersController.create)
 
-//POST /auth/login - User submits login form
+//POST /auth/login - User submits login form.
+//Passport authenticates the user for us based on the 'local' strategy in services/auth/local.js
 authRouter.post('/login', passport.authenticate('local', {
-    successRedirect: '/api/auth/verify',
-    failureRedirect: '/api/auth/verify',
+    successRedirect: '/api/auth/login',
+    failureRedirect: '/api/auth/login',
     failureFlash: true,
 }))
 
 //GET /auth/verify - Sending back information based on login success or failure with authRouter.post('/login')
-authRouter.get('/verify', (req, res) => {
+authRouter.get('/login', (req, res) => {
     if (req.user) return res.status(200).json({
-        message: 'ok',
+        message: 'User Verified',
         auth: true,
         data: {
             user: req.user
         }
     }) 
     else return res.status(400).json({
-        message: 'Login Failed',
+        message: 'Login Failed - incorrect password or username',
         auth: false,
         data: {
             user: null
@@ -34,9 +35,9 @@ authRouter.get('/verify', (req, res) => {
 
 //GET /auth/logout - Logging Out
 authRouter.get('/logout', (req, res) => {
-    req.logout()
+    req.logout();
     res.json({
-        message: 'Logout Successful',
+        message: 'Logged Out',
         auth: false,
         data: {
             user: null

@@ -17,12 +17,12 @@ class User {
         })
     }
 
-    //SEARCH BY USERID - Will be usered for User-States
+    //SEARCH BY USERID - Will be used for User-States
     static getById(id) {
         return db.oneOrNone("SELECT * FROM users WHERE id = $1", id)
           .then((user) => {
             if (user) return new this(user);
-            throw new Error("No user found.");
+            throw new Error(`No user found with id: ${id}`);
           });
       }
 

@@ -1,8 +1,6 @@
 require('dotenv').config();
 require("express");
 const fetch = require('node-fetch');
-const db = require('../db/config');
-const { result } = require('../db/config');
 
 
 const USTotalsURL = 'https://api.covidtracking.com/v1/us/current.json';

@@ -45,6 +45,8 @@ const authRoutes = require('./routes/auth-routes')
 app.use('/api/auth', authRoutes)
 // const stateRoutes = require('./routes/state-routes')
 // app.use('/api/stats', stateRoutes)
+const userStatesRouter = require('./routes/user-states');
+app.use('/user/stats', userStatesRouter);
 
 //Error handlers
 app.use('*', (req, res) => {

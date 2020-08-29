@@ -8,7 +8,7 @@ class UserStates {
     }
 
     static getAllByUserId(id){
-        return db.manyOrNone(`SELECT state_id FROM user_states WHERE user_id = $1`, id)
+        return db.manyOrNone(`SELECT * FROM user_states WHERE user_id = $1`, id)
         .then((userStates) => {
             return userStates.map((userState) => {
                 return new UserStates(userState);

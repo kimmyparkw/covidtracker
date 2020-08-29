@@ -7,6 +7,7 @@ const userStatesController = {
             res.json({
                 selectedStates: userStates,
                 // stateTotals: res.locals.covidData,
+                
             })
         })
         .catch(next);
@@ -14,7 +15,7 @@ const userStatesController = {
     create(req, res, next) {
         new UserStates({
             user_id: req.user.id,
-            route_id: req.params.id
+            state_id: req.params.id
         })
         .save()
         .then(() => {
@@ -25,7 +26,7 @@ const userStatesController = {
         .catch(next);
     },
     destroy(req, res, next) {
-        UserStates.getByStateId(req.params.id)
+        UserStates.getById(req.params.id)
         .then((userState) => {
             return userState.delete();
         })

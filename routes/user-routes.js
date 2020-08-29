@@ -5,6 +5,16 @@ const userStatesController = require('../controllers/users-states-controller')
 const usersController = require("../controllers/users-controller");
 const authHelpers = require("../services/auth/auth-helpers");
 
+//GET /user/new
+userRouter.get('/new', (req, res) => {
+    res.status(201).json({
+        message: "Page Exists",
+    })
+})
+
+//POST /user/register - User submits a new user profile
+userRouter.post('/new', usersController.create)
+
 //GET /user/profile
 userRouter.get('/profile', userStatesController.index)
 

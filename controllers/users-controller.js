@@ -28,7 +28,6 @@ const usersController = {
   show(req, res, next) {
     User.getByUserId(req.user.id)
       .then(user => {
-        console.log("Users Controller - Show", req.user.id)
         res.status(201).json({
           message: 'User Profile Retrived.',
           data: {
@@ -41,10 +40,8 @@ const usersController = {
 
   //Allow users to edit their profiles
   update(req, res, next) {
-    console.log("arrive user controller update")
     User.getByUserId(req.params.id)
       .then((user) => {
-        console.log("User Line 47", user)
         return user.update(req.body, user.id)
       }).then((updatedUser) => {
         res.status(201).json({
@@ -56,6 +53,5 @@ const usersController = {
       }).catch(next)
   },
 }
-
 
 module.exports = usersController

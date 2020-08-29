@@ -19,6 +19,7 @@ class User {
 
     //SEARCH BY USERID - Will be used for User-States?
     static getByUserId(id) {
+        console.log("Arrive getByUserId in User model")
         return db.oneOrNone("SELECT * FROM users WHERE id = $1", id)
           .then((user) => {
             if (user) return new this(user);
@@ -35,11 +36,12 @@ class User {
     }
 
     //UPDATE USER PROFILE
-    update(changes) {
+    update(changes, id) {
         Object.assign(this, changes)
+        console.log(changes)
         return db.oneOrNone(
             `UPDATE users SET
-            email = $/email/, password_digest = $/password_digest/ RETURNING *`, this)
+            email = $/email/, password_digest = $/password_digest/ WHERE id = ${id} RETURNING *`, this)
             .then(user => {
             return Object.assign(this, user)
         })

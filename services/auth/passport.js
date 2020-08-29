@@ -8,7 +8,7 @@ module.exports = () => {
   });
 
   passport.deserializeUser((username, done) => {
-    User.findByUserName(username)
+    User.getByUserName(username)
       .then((user) => {
         done(null, user)
       })

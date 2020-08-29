@@ -40,11 +40,13 @@ app.get('/', (req, res) => {
     res.send('Hello World!  Welcome To Our Covid-19 Tracker')
 })
 
-// comment these out for now
+
 const authRoutes = require('./routes/auth-routes')
 app.use('/api/auth', authRoutes)
-// const stateRoutes = require('./routes/state-routes')
-// app.use('/api/stats', stateRoutes)
+const stateRoutes = require('./routes/user-states')
+app.use('/api/stats', stateRoutes)
+const userRoutes = require('./routes/user-routes')
+app.use('/api/user', userRoutes)
 
 //Error handlers
 app.use('*', (req, res) => {

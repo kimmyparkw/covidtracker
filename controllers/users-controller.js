@@ -22,8 +22,19 @@ usersController.create = (req, res, next) => {
             }
           })
         })
-      }).catch(next);
-    }
+      }).catch(next)
+}
+    
+//Allow users to edit their profiles
+usersController.update = (req, res, next) => {
+  User.getById(req.params.id)
+    .then((user) => {
+    return user.update(req.body)
+    }).then((updatedUser) => {
+    res.redirect('/user/profile')
+  }).catch(next)
+}
+};
 
 
 module.exports = usersController

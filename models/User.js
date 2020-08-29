@@ -8,7 +8,7 @@ class User {
         this.password_digest = password_digest;
     }
 
-    static findByUserName(username) {
+    static getByUserName(username) {
         return db.oneOrNone(`
         SELECT * FROM users WHERE username = $1`, username)
             .then(user => {
@@ -17,8 +17,8 @@ class User {
         })
     }
 
-    //SEARCH BY USERID - Will be used for User-States
-    static getById(id) {
+    //SEARCH BY USERID - Will be used for User-States?
+    static getByUserId(id) {
         return db.oneOrNone("SELECT * FROM users WHERE id = $1", id)
           .then((user) => {
             if (user) return new this(user);

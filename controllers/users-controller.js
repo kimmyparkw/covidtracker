@@ -34,7 +34,7 @@ usersController.update = (req, res, next) => {
     res.redirect('/user/profile')
   }).catch(next)
 }
-};
+
 
 
 module.exports = usersController

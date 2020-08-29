@@ -4,8 +4,7 @@ const passport = require('../services/auth/local')
 const authHelpers = require('../services/auth/auth-helpers')
 const usersController = require('../controllers/users-controller')
 
-//POST /auth/register - User submits a new user profile
-authRouter.post('/register', usersController.create)
+
 
 //POST /auth/login - User submits login form.
 //Passport authenticates the user for us based on the 'local' strategy in services/auth/local.js

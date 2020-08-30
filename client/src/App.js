@@ -19,7 +19,7 @@ class App extends React.Component {
   handleFormSubmit = (method, e, data, id) => {
     e.preventDefault()
     console.log("submit data", data)
-    fetch('/api/user/new', { //possible to ternary the fetch link?
+    fetch(this.state.user ? '/api/user' : '/api/user/profile/:id' , { 
       method: method,
       header: {
         'Content-Type': 'application/json',

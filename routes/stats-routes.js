@@ -11,5 +11,9 @@ statsRouter.get('/', covidDataHelpers.getUSTotals, (req, res) => {
     res.json(res.locals)
 })
 
+//GET /stats/:id - return selected State Data
+statsRouter.get('/:id', covidDataHelpers.getSingleStateDetails, (req, res) => {
+    res.json(res.locals)
+})
 
 module.exports = statsRouter

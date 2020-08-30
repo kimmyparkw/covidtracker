@@ -40,7 +40,7 @@ const getSingleStateDetails = (req, res, next) => {
     fetch(`https://api.covidtracking.com/v1/states/${req.params.id}/current.json`)
     .then((res) => res.json())
     .then((data) => {
-        console.log(req.params.id)
+        // console.log(req.params.id)
         let covidData = data;
         res.locals.singleState = covidData;
         next();

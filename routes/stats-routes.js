@@ -2,7 +2,6 @@ const express = require('express')
 const statsRouter = express.Router()
 
 const authHelpers = require('../services/auth/auth-helpers')
-const statsController = require('../controllers/stats-controller')
 const covidDataHelpers = require('../services/covid-data-helpers')
 
 //GET /stats - returns all US Totals Data

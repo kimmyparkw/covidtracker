@@ -1,14 +1,16 @@
 import React from 'react'
+import StatesList from './StatesList.jsx'
+import StateSingle from './StateSingle.jsx'
 
 class StateController extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state=({
             isLoaded: false,
             allStateData: null,
             singleStateData: null,
             usData: null,
-            currentPage: '',
+            currentPage: props.currentPage,
             fireRedirect: false,
             redirectPath: null,
         })
@@ -18,10 +20,11 @@ class StateController extends React.Component {
         fetch('/stats') 
         .then(res => res.json())
         .then(res => {
+            console.log(res)
             this.setState({
                 isLoaded: true,
-                allStateData: res.data.stateTotals,
-                usData: res.data.countryTotals,
+                allStateData: res.stateTotals,
+                usData: res.usTotals,
             })
         })
     }
@@ -33,7 +36,7 @@ class StateController extends React.Component {
             console.log("single state", res)
             this.setState({
                 singleStateData: res.data,
-                dataLoaded: true,
+                isLoaded: true,
             })
         })
     }
@@ -60,7 +63,7 @@ class StateController extends React.Component {
 
     decideWhichToRender() {
         switch(this.state.currentPage) {
-            case 'index':
+            default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData}/>
             case 'show':
                 return <StateSingle singleStateData={this.state.singleStateData}/>
@@ -70,7 +73,7 @@ class StateController extends React.Component {
     render() {
         return (
             <div className="container">
-                {dataLoaded ? this.decideWhichToRender() : <h1>Loading...</h1>}
+                {(this.state.isLoaded) ? this.decideWhichToRender() : <h1>Loading...</h1>}
             </div>
         )
     }

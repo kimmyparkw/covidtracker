@@ -4,13 +4,11 @@ const passport = require('../services/auth/local')
 const authHelpers = require('../services/auth/auth-helpers')
 const usersController = require('../controllers/users-controller')
 
-
-
 //POST /auth/login - User submits login form.
 //Passport authenticates the user for us based on the 'local' strategy in services/auth/local.js
 authRouter.post('/login', passport.authenticate('local', {
-    successRedirect: '/api/auth/login',
-    failureRedirect: '/api/auth/login',
+    successRedirect: '/auth/login',
+    failureRedirect: '/auth/login',
     failureFlash: true,
 }))
 

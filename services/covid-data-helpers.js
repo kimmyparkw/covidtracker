@@ -21,7 +21,7 @@ const getUSTotals = (req, res, next) => {
     });
 }
 
-const getStateTotals = () => {
+const getStateTotals = (req, res, next) => {
     fetch(`${stateTotalsURL}`)
     .then((res) => res.json())
     .then((data) => {

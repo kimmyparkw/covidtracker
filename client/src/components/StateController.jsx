@@ -14,43 +14,64 @@ class StateController extends React.Component {
         })
     }
 
-    getAllStates = () => {
-        fetch('/api/stats') 
+    getAllData = () => {
+        fetch('/stats') 
         .then(res => res.json())
         .then(res => {
             this.setState({
                 isLoaded: true,
                 allStateData: res.data.stateTotals,
+                usData: res.data.countryTotals,
             })
         })
     }
 
-    getUsData = () => {
-        fetch('/api/stats')
+    getSingleState = (id) => {
+        fetch(`/stats/${id}`)
         .then(res => res.json())
         .then(res => {
+            console.log("single state", res)
             this.setState({
-                usData: res.data.countryTotals,
-                isLoaded: true,
+                singleStateData: res.data,
+                dataLoaded: true,
             })
         })
-    }
-
-    getSingleState = () => {
-        fetch(`/api/stats/${currentState}`)
     }
 
     componentDidMount() {
-
+        if (this.state.currentPage === 'index') {
+            this.getAllData()
+        } else if (this.state.currentPage === 'show') {
+            this.getSingleState()
+        }
     }
 
-    handleDelete = () => {
+    handleDelete = (id) => {
+        fetch(`/user/stats/${id}`)
+        .then(res => res.json())
+        .then(res => {
+            console.log("delete res", res)
+            this.setState({
+                fireRedirect: true,
+                redirectPath: '/user/profile'
+            })
+        })
+    }
 
+    decideWhichToRender() {
+        switch(this.state.currentPage) {
+            case 'index':
+                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData}/>
+            case 'show':
+                return <StateSingle singleStateData={this.state.singleStateData}/>
+        }
     }
 
     render() {
         return (
-            "hello world"
+            <div className="container">
+                {dataLoaded ? this.decideWhichToRender() : <h1>Loading...</h1>}
+            </div>
         )
     }
 }

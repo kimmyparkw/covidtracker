@@ -16,10 +16,12 @@ class App extends React.Component {
     }
   }
 
+  
   handleFormSubmit = (method, e, data, id) => {
+    const submitTernary = this.state.user ? '/user' : '/user/profile/:id'
     e.preventDefault()
     console.log("submit data", data)
-    fetch(this.state.user ? '/api/user' : '/api/user/profile/:id' , { 
+    fetch( submitTernary , { 
       method: method,
       header: {
         'Content-Type': 'application/json',
@@ -38,7 +40,7 @@ class App extends React.Component {
   }
 
   logout = () => {
-    fetch('/api/auth/logout', {
+    fetch('/auth/logout', {
       credentials: 'include',
     }).then(res => res.json())
     .then(res => {
@@ -56,7 +58,6 @@ class App extends React.Component {
        <Header />
        <div className="container">
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={} />
   
        </div>
        <Footer />

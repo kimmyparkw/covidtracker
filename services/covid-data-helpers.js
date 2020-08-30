@@ -37,7 +37,7 @@ const getStateTotals = () => {
 }
 
 const getSingleStateDetails = () => {
-    fetch(`https://api.covidtracking.com/v1/states/GA/current.json`)
+    fetch(`https://api.covidtracking.com/v1/states/${res.locals.state}/current.json`)
     .then((res) => res.json())
     .then((data) => {
         //console.log(res)

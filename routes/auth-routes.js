@@ -6,7 +6,7 @@ const usersController = require('../controllers/users-controller')
 
 //POST /auth/login - User submits login form.
 //Passport authenticates the user for us based on the 'local' strategy in services/auth/local.js
-authRouter.post('/login', passport.authenticate('local', {
+authRouter.post('/login', authHelpers.loginRedirect, passport.authenticate('local', {
     successRedirect: '/auth/login',
     failureRedirect: '/auth/login',
     failureFlash: true,

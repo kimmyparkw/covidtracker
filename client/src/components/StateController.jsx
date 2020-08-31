@@ -67,9 +67,9 @@ class StateController extends React.Component {
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':
-                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} fullName={this.state.fullStateNames}/>
+                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle singleStateData={this.state.singleStateData}/>
+                return <StateSingle currentPage={this.state.currentPage} singleStateData={this.state.singleStateData}/>
         }
     }
 

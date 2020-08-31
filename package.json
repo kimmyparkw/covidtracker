@@ -24,6 +24,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "debugger": "DEBUG=*:* nodemon server.js"
+    "debugger": "DEBUG=*:* nodemon server.js",
+    "heroku-postbuild": "cd client && yarn && yarn build && cp -a ./build/ ../public/"
   }
 }

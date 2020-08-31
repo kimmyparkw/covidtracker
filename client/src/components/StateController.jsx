@@ -14,6 +14,7 @@ class StateController extends React.Component {
             usData: null,
             currentPage: props.currentPage,
             currentId: props.currentId,
+            userState: props.userState,
             fireRedirect: false,
             redirectPath: null,
             fullStateNames: FullStateNames,
@@ -23,6 +24,7 @@ class StateController extends React.Component {
     }
 
     getAllData = () => {
+
         fetch('/stats') 
         .then(res => res.json())
         .then(res => {
@@ -70,16 +72,18 @@ class StateController extends React.Component {
   
     }
 
-    handleDelete = (id) => {
-        fetch(`/user/stats/${id}`)
+    handleDelete = () => {
+        fetch(`/user/stats/${this.state.currentId}`, {
+            method: 'DELETE',
+        })
         .then(res => res.json())
         .then(res => {
-            console.log("delete res", res)
             this.setState({
                 fireRedirect: true,
                 redirectPath: '/user/profile'
             })
-        })
+            this.getAllData()
+        }).catch(err => console.log(err))
     }
 
     decideWhichToRender() {
@@ -87,7 +91,7 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} singleStateData={this.state.singleStateData}/>
+                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData}/>
             case 'profile':
                 return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage}/>
                 

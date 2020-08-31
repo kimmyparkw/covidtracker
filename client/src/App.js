@@ -70,10 +70,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header auth={this.state.auth} logout={this.logout}/>
-       <div className="container">
+       <div className="main">
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
+        <Route exact path='/user/profile' render={() => (<StateController currentPage='profile' />)} />
         <Route exact path='/stats/:id' render={props => (<StateController currentPage='show' currentId={props.match.params.id} />)} />
         <Route exact path='/auth/login' render={() => (
           this.state.auth

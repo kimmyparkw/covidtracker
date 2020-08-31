@@ -2,23 +2,21 @@
 //includes the state snapshots
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import StateSingle from './StateSingle'
 
 class Profile extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            userId: this.props.userId,
-        }
-    }
+   
     render() {
         return (
-            <div className="PROFILE">
-                
-                {console.log("req:",this.req)}
-            <Link to={`/user/profile/${this.userId}`}>Edit Profile</Link>
-            <h2>"hello world"</h2>
-            </div>
+            <>
+                {console.log(this.props)}
+            <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> 
+            {
+                this.props.userSelected.map((stateData)=> (
+                    <StateSingle key={stateData.hash} usData={stateData} currentPage={this.props.currentPage}/>
+                ))
+            }
+            </>
         )
     }
 }

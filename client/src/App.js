@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import './App.css';
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './components/Home.jsx'
+import About from './components/About.jsx'
 import StateController from './components/StateController.jsx'
-// import Login from './components/Login.jsx'
-// import Register from './components/Register.jsx'
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -58,8 +59,19 @@ class App extends React.Component {
       <div className="App">
        <Header />
        <div className="container">
-        <Route exact path="/" component={Home} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
+        <Route exact path='/auth/login' render={() => (
+          this.state.auth
+          ? <Redirect to='/user/profile' />
+          : <Login />
+        )}/>
+        <Route exact path='/user/new' render={() => (
+          this.state.auth
+          ? <Redirect to='/user/profile' />
+          : <Register />
+        )} />
        </div>
        <Footer />
       </div>

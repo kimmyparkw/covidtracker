@@ -18,7 +18,7 @@ class StateController extends React.Component {
             redirectPath: null,
             fullStateNames: FullStateNames,
             userSelected: null,
-            user: null,
+            userData: null,
         })
     }
 
@@ -53,7 +53,7 @@ class StateController extends React.Component {
             this.setState({
                 userSelected: res.stateTotals,
                 isLoaded: true,
-                user: user,
+                userData: res.user,
             })
         })
     }
@@ -65,7 +65,7 @@ class StateController extends React.Component {
             this.getSingleState()
         } 
         else if(this.state.currentPage === 'profile') {
-            // this.getUserSelected()
+            this.getUserSelected()
         }
   
     }
@@ -89,7 +89,7 @@ class StateController extends React.Component {
             case 'show':
                 return <StateSingle currentPage={this.state.currentPage} singleStateData={this.state.singleStateData}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} user={this.state.user}/>
+                return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage}/>
                 
         }
     }

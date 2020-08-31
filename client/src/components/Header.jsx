@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
     return (
-        <div className="header">
+        <div className="nav-container">
             <h1>Logo will go here</h1>
             <nav>
                 <Link to='/'>Home</Link>

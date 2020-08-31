@@ -24,12 +24,16 @@ class UserForm extends React.Component {
 
     render() {
         return(
-            <form>
-                <input type="text" name="email" value={this.state.email} placeholder="Email" />
-                <input type="text" name="username" value={this.state.username} placeholder="Username" />
-                <input type="password" name="password" value={this.state.password} placeholder="Password" />
-                <input type="submit" value="Submit" />
-            </form>
+            <div className='form-container'>
+                <h3>Edit User Info</h3>
+                <form>
+                    <input type="text" name="email" value={this.state.email} placeholder="Email" />
+                    <input type="text" name="username" value={this.state.username} placeholder="Username" />
+                    <input type="password" name="password" value={this.state.password} placeholder="Password" />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+
         )
     }
 }

@@ -10,7 +10,7 @@ export default function Header(props) {
                 <Link to='/'>Home</Link>
                 <Link to='/about'>About</Link>
                 <Link to='/stats'>Stats</Link>
-                {props.auth && <Link to='/profile'>Profile</Link>}
+                {props.auth && <Link to='/user/profile'>Profile</Link>}
                 {props.auth ? (<Link to='/auth/logout' onClick={props.logout}>Logout</Link>) : (<Link to='/auth/login'>Login</Link>)}
             </nav>
         </div>

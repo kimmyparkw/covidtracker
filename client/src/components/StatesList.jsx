@@ -9,8 +9,8 @@ function StatesList(props) {
     return (
         <>
             <StateSingle usData={props.usData} />
-            {props.allStateData.map((state) => {
-                return <h3>{state.state}</h3>
+            {props.allStateData.map((state, i) => {
+                return <h3 key={i}>{state.state}</h3>
             })}
         </>
     )

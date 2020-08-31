@@ -20,7 +20,6 @@ class StateController extends React.Component {
         fetch('/stats') 
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             this.setState({
                 isLoaded: true,
                 allStateData: res.stateTotals,
@@ -47,6 +46,7 @@ class StateController extends React.Component {
         } else if (this.state.currentPage === 'show') {
             this.getSingleState()
         }
+  
     }
 
     handleDelete = (id) => {
@@ -66,7 +66,7 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData}/>
             case 'show':
-                return <StateSingle singleStateData={this.state.singleStateData}/>
+                return <StateSingle getSingleState={this.getSingleState} singleStateData={this.state.singleStateData}/>
         }
     }
 

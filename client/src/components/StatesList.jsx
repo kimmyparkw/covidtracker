@@ -4,16 +4,27 @@
 //we passed in USdata and all state data into this component. These are our props.
 import React from 'react'
 import StateSingle from './StateSingle.jsx'
+import State from './State.jsx'
 
 function StatesList(props) {
     return (
         <>
             <StateSingle usData={props.usData} />
-            {props.allStateData.map((state, i) => {
-                return <h3 key={i}>{state.state}</h3>
+            {props.allStateData.map((state) => {
+                return <State key={state.hash} state={state} />
             })}
         </>
     )
 }
 
 export default StatesList
+
+
+
+
+
+//when we click on a pineapple,
+//we want to change the state of the page to 'show'
+//have the page rerender to show that particular state's data using the StateSingle component
+//use the getSingleState function
+//

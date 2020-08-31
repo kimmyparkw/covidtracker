@@ -4,18 +4,19 @@
 import React from 'react'
 
 class UserForm extends React.Component {
-    constructor() {
+    constructor(props) {
         super()
         this.state = ({
             email: '',
             username: '',
             password: '',
+            
         })
     }
 
     handleFormChanges = (e) => {
-        const name = {e.target.name}
-        const value = {e.target.value}
+        const name = e.target.name
+        const value = e.target.value
         this.setState({
             [name]: value
         })
@@ -24,11 +25,11 @@ class UserForm extends React.Component {
 
     render() {
         return(
-            <form>
-                <input type="text" name="email" value={this.state.email} placeholder="Email" />
-                <input type="text" name="username" value={this.state.username} placeholder="Username" />
-                <input type="password" name="password" value={this.state.password} placeholder="Password" />
-                <input type="submit" value="Submit" />
+            <form onSubmit={(e) => this.props.handleFormSubmit(this.props.method, e, this.state, this.state.id)}>
+                {this.props.userState.user && <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={this.handleFormChanges} />}
+                <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleFormChanges} required/>
+                <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleFormChanges} required/>
+                <input type="submit" value="Login" />
             </form>
         )
     }

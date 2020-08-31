@@ -19,28 +19,39 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    fetch('/auth/login', { credentials: 'include' })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          auth: res.auth,
+          user: res.data.user,
+        })
+      }).catch(err => console.log(err))
+  }
   
-  // handleFormSubmit = (method, e, data, id) => {
-  //   const submitTernary = this.state.user ? '/user' : '/user/profile/:id'
-  //   e.preventDefault()
-  //   console.log("submit data", data)
-  //   fetch( submitTernary , { 
-  //     method: method,
-  //     header: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     credentials: 'include',
-  //     body: JSON.stringify(data),
-  //   }) .then(res => res.json())
-  //   .then(res => {
-  //     console.log("submit res", res)
-  //     this.setState({
-  //       auth: res.auth,
-  //       user: res.data.user,
-  //     })
-  //   }).catch(err => console.log(err))
+  
+  handleFormSubmit = (method, e, data, id) => {
+    const submitTernary = this.state.user ? '/user' : '/auth/login'
+    e.preventDefault()
+    console.log("submit data", data)
+    fetch( submitTernary , { 
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    }) .then(res => res.json())
+    .then(res => {
+      console.log("submit res", res)
+      this.setState({
+        auth: res.auth,
+        user: res.data.user,
+      })
+    }).catch(err => console.log(err))
 
-  // }
+  }
 
   logout = () => {
     fetch('/auth/logout', {
@@ -58,7 +69,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <Header />
+        <Header auth={this.state.auth} logout={this.logout}/>
        <div className="container">
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
@@ -67,7 +78,7 @@ class App extends React.Component {
         <Route exact path='/auth/login' render={() => (
           this.state.auth
           ? <Redirect to='/user/profile' />
-          : <Login />
+              : <Login handleFormSubmit={this.handleFormSubmit} userState={this.state}/>
         )}/>
         <Route exact path='/user/new' render={() => (
           this.state.auth

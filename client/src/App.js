@@ -8,7 +8,7 @@ import About from './components/About.jsx'
 import StateController from './components/StateController.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
-
+import Profile from './components/Profile.jsx'
 class App extends React.Component {
   constructor() {
     super()
@@ -19,6 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
+    console.log("Auth", this.auth)
     fetch('/auth/login', { credentials: 'include' })
       .then(res => res.json())
       .then(res => {
@@ -76,12 +77,12 @@ class App extends React.Component {
         <Route exact path='/stats/:id' render={props => (<StateController currentPage='show' currentId={props.match.params.id} />)} />
         <Route exact path='/auth/login' render={() => (
           this.state.auth
-          ? <Redirect to='/user/profile' />
+              ? <Redirect to='/user/profile' />
               : <Login handleFormSubmit={this.handleFormSubmit} userState={this.state}/>
         )}/>
         <Route exact path='/user/new' render={() => (
           this.state.auth
-          ? <Redirect to='/user/profile' />
+              ? <Redirect to='/user/profile' render={() => (<Profile />)}/>
           : <Register />
         )} />
        </div>

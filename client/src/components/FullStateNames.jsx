@@ -3,7 +3,7 @@ const FullStateNames ={
     'AL': 'Alabama',
     'AZ': 'Arizona',
     'AR': 'Arkansas',
-    'CA': 'Califronia',
+    'CA': 'California',
     'CO': 'Colorado',
     'CT': 'Connecticut',
     'DE': 'Deleware',

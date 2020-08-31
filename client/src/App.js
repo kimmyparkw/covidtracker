@@ -8,12 +8,13 @@ import About from './components/About.jsx'
 import StateController from './components/StateController.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
+import Profile from './components/Profile.jsx'
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      auth: false,
+      auth: true,
       user: null,
     }
   }
@@ -62,6 +63,7 @@ class App extends React.Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
+        <Route exact path='/user/profile' render={() => (<StateController currentPage='profile' />)} />
         <Route exact path='/auth/login' render={() => (
           this.state.auth
           ? <Redirect to='/user/profile' />

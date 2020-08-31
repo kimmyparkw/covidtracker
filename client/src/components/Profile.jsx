@@ -2,11 +2,19 @@
 //includes the state snapshots
 
 import React from 'react'
+import StateSingle from './StateSingle'
 
 class Profile extends React.Component {
     render() {
         return (
-            "hello world"
+            <>
+            <h1>Welcome Back, User!</h1>
+            {
+                this.props.userSelected.map((stateData)=> {
+                    <StateSingle usData={stateData}/>
+                })
+            }
+            </>
         )
     }
 }

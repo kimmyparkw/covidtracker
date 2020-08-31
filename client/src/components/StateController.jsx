@@ -2,6 +2,7 @@ import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
 import FullStateNames from './FullStateNames'
+import Profile from './Profile'
 
 class StateController extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class StateController extends React.Component {
             fireRedirect: false,
             redirectPath: null,
             fullStateNames: FullStateNames,
+            userSelected: null,
         })
     }
 
@@ -43,11 +45,28 @@ class StateController extends React.Component {
         })
     }
 
+    getUserSelected = () => {
+        console.log(`hi`)
+        fetch(`/user/profile`)
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                userSelected: res.stateTotals
+            })
+        })
+    }
+
     componentDidMount() {
         if (this.state.currentPage === 'index') {
             this.getAllData()
         } else if (this.state.currentPage === 'show') {
             this.getSingleState()
+        } 
+        else if(this.state.currentPage === 'profile') {
+            // this.getUserSelected()
+            this.setState({
+                isLoaded: true
+            })
         }
     }
 
@@ -69,6 +88,8 @@ class StateController extends React.Component {
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} fullName={this.state.fullStateNames}/>
             case 'show':
                 return <StateSingle singleStateData={this.state.singleStateData}/>
+            case 'profile':
+                return <Profile userSelected={this.state.userSelected}/>
         }
     }
 

@@ -68,13 +68,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
-       <Header />
+       <Header auth={this.state.auth} logout={this.logout}/>
        <div className="main">
-=======
-        <Header auth={this.state.auth} logout={this.logout}/>
-       <div className="container">
->>>>>>> 5081b5a820a6caf94a1c3df833b0ae902b101e0a
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />

@@ -8,3 +8,5 @@ export default function StateSnapshot() {
         "hello world"
     )
 }
+
+//<button onClick={() => (this.props.handleDelete)}>Delete</button>

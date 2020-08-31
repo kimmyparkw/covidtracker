@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log("Auth", this.auth)
+    console.log("Auth Check on Component Did Mount...(GET 400 Will follow if no current user logged in)", this.auth)
     fetch('/auth/login', { credentials: 'include' })
       .then(res => res.json())
       .then(res => {
@@ -69,13 +69,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
-       <Header />
-       <div className="main">
-=======
         <Header auth={this.state.auth} logout={this.logout}/>
        <div className="container">
->>>>>>> 5081b5a820a6caf94a1c3df833b0ae902b101e0a
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
@@ -87,7 +82,7 @@ class App extends React.Component {
         )}/>
         <Route exact path='/user/new' render={() => (
           this.state.auth
-              ? <Redirect to='/user/profile' render={() => (<Profile />)}/>
+              ? <Redirect to='/user/profile'/>
           : <Register />
         )} />
        </div>

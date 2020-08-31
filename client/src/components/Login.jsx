@@ -13,6 +13,7 @@ class Login extends React.Component {
                 <div>
                     <h4>Login</h4>
                     <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} />
+                    <span>New User? <a href='/user/new'>Click Here To Register</a></span>
                 </div>
             )
 

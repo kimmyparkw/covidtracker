@@ -70,7 +70,6 @@ class App extends React.Component {
       <div className="App">
        <Header auth={this.state.auth} logout={this.logout}/>
        <div className="main">
-    
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />

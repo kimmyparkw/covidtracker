@@ -10,10 +10,14 @@ import State from './State.jsx'
 function StatesList(props) {
     return (
         <>
-            <StateSingle currentPage={props.currentPage} usData={props.usData} />
-            {props.allStateData.map((state, i) => {
-                return <Link to={`/stats/${state.state}`}><h3 key={i}>{props.fullName[state.state]}</h3></Link>
-            })}
+            <div className='info-container'>
+                <StateSingle currentPage={props.currentPage} usData={props.usData} />
+            </div>
+            <div className='state-list'>
+                {props.allStateData.map((state, i) => {
+                    return <Link to={`/stats/${state.state}`}><h3 key={i}>{props.fullName[state.state]}</h3></Link>
+                })}
+            </div>
         </>
     )
 }

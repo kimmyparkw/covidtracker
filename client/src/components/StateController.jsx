@@ -1,6 +1,7 @@
 import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
+import FullStateNames from './FullStateNames'
 
 class StateController extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class StateController extends React.Component {
             currentPage: props.currentPage,
             fireRedirect: false,
             redirectPath: null,
+            fullStateNames: FullStateNames,
         })
     }
 
@@ -64,7 +66,7 @@ class StateController extends React.Component {
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':
-                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData}/>
+                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} fullName={this.state.fullStateNames}/>
             case 'show':
                 return <StateSingle singleStateData={this.state.singleStateData}/>
         }

@@ -12,6 +12,7 @@ class StateController extends React.Component {
             singleStateData: null,
             usData: null,
             currentPage: props.currentPage,
+            currentId: props.currentId,
             fireRedirect: false,
             redirectPath: null,
             fullStateNames: FullStateNames,
@@ -30,13 +31,13 @@ class StateController extends React.Component {
         })
     }
 
-    getSingleState = (id) => {
-        fetch(`/stats/${id}`)
+    getSingleState = () => {
+        fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
         .then(res => {
             console.log("single state", res)
             this.setState({
-                singleStateData: res.data,
+                singleStateData: res.singleState,
                 isLoaded: true,
             })
         })
@@ -68,7 +69,7 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle getSingleState={this.getSingleState} singleStateData={this.state.singleStateData}/>
+                return <StateSingle singleStateData={this.state.singleStateData}/>
         }
     }
 

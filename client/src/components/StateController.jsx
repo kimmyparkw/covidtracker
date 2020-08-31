@@ -91,7 +91,7 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData}/>
+                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames}/>
             case 'profile':
                 return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage}/>
                 

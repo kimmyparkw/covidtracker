@@ -62,6 +62,7 @@ class App extends React.Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
+        <Route exact path='/stats/:id' render={props => (<StateController currentPage='show' currentId={props.match.params.id} />)} />
         <Route exact path='/auth/login' render={() => (
           this.state.auth
           ? <Redirect to='/user/profile' />

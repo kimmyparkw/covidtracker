@@ -60,6 +60,5 @@ const FullStateNames ={
     'VI': 'Virgin Islands'
   }
 
-  console.log(FullStateNames.length)
 
   export default FullStateNames;

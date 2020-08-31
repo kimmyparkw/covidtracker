@@ -1,9 +1,15 @@
 //detailed information about a particular state
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export default function State() {
+function State(props) {
     return (
-        "hello world"
+        <h1>{props.state.state}</h1>
     )
 }
+
+export default State
+
+
+// onClick={() => {props.getSingleState(props.state.state)}}

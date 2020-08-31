@@ -8,6 +8,7 @@ import About from './components/About.jsx'
 import StateController from './components/StateController.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
+import Profile from './components/Profile.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -68,11 +69,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <Header auth={this.state.auth} logout={this.logout}/>
+        <Header auth={this.state.auth} logout={this.logout}/>
        <div className="main">
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
+        <Route exact path='/user/profile' render={() => (<StateController currentPage='profile' />)} />
         <Route exact path='/stats/:id' render={props => (<StateController currentPage='show' currentId={props.match.params.id} userState={this.state}/>)} />
         <Route exact path='/auth/login' render={() => (
           this.state.auth

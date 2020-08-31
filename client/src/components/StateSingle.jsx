@@ -45,7 +45,7 @@ class StateSingle extends React.Component {
     render() {
         return (
             <>
-                {this.props.currentPage === 'index' && this.showUsData()}
+                {(this.props.currentPage === 'index' || this.props.currentPage ==='profile') && this.showUsData()}
                 {this.props.currentPage === 'show' && this.showStateData()}
 
             </>

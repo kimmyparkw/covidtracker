@@ -2,6 +2,7 @@ import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
 import FullStateNames from './FullStateNames'
+import Profile from './Profile'
 
 class StateController extends React.Component {
     constructor(props) {
@@ -17,6 +18,8 @@ class StateController extends React.Component {
             fireRedirect: false,
             redirectPath: null,
             fullStateNames: FullStateNames,
+            userSelected: null,
+            userData: null,
         })
     }
 
@@ -45,11 +48,26 @@ class StateController extends React.Component {
         })
     }
 
+    getUserSelected = () => {
+        fetch(`/user/profile`)
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                userSelected: res.stateTotals,
+                isLoaded: true,
+                userData: res.user,
+            })
+        })
+    }
+
     componentDidMount() {
         if (this.state.currentPage === 'index') {
             this.getAllData()
         } else if (this.state.currentPage === 'show') {
             this.getSingleState()
+        } 
+        else if(this.state.currentPage === 'profile') {
+            this.getUserSelected()
         }
   
     }
@@ -73,7 +91,10 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle handleDelete={this.handleDelete} currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData}/>
+                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData}/>
+            case 'profile':
+                return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage}/>
+                
         }
     }
 

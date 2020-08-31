@@ -4,13 +4,13 @@ const userStatesController = {
     index(req, res, next) {
         UserStates.getAllByUserId(req.user.id)
         .then((userStates) => {
-            const justSelected = res.locals.stateTotals.filter((el) => {
+            const userSelected = res.locals.stateTotals.filter((el) => {
                 return userStates.includes(el.state)
             })
             console.log(userStates)
             res.json({
                 selectedStates: userStates,
-                stateTotals: justSelected,
+                stateTotals: userSelected,
                 
             })
         })

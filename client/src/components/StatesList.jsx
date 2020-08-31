@@ -10,7 +10,7 @@ function StatesList(props) {
         <>
             <StateSingle usData={props.usData} />
             {props.allStateData.map((state, i) => {
-                return <h3 key={i}>{state.state}</h3>
+                return <h3 key={i}>{props.fullName[state.state]}</h3>
             })}
         </>
     )

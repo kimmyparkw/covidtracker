@@ -1,6 +1,7 @@
 import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
+import FullStateNames from './FullStateNames'
 
 class StateController extends React.Component {
     constructor(props) {
@@ -11,8 +12,10 @@ class StateController extends React.Component {
             singleStateData: null,
             usData: null,
             currentPage: props.currentPage,
+            currentId: props.currentId,
             fireRedirect: false,
             redirectPath: null,
+            fullStateNames: FullStateNames,
         })
     }
 
@@ -20,7 +23,6 @@ class StateController extends React.Component {
         fetch('/stats') 
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             this.setState({
                 isLoaded: true,
                 allStateData: res.stateTotals,
@@ -29,13 +31,13 @@ class StateController extends React.Component {
         })
     }
 
-    getSingleState = (id) => {
-        fetch(`/stats/${id}`)
+    getSingleState = () => {
+        fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
         .then(res => {
             console.log("single state", res)
             this.setState({
-                singleStateData: res.data,
+                singleStateData: res.singleState,
                 isLoaded: true,
             })
         })
@@ -47,6 +49,7 @@ class StateController extends React.Component {
         } else if (this.state.currentPage === 'show') {
             this.getSingleState()
         }
+  
     }
 
     handleDelete = (id) => {
@@ -64,9 +67,9 @@ class StateController extends React.Component {
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':
-                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData}/>
+                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle singleStateData={this.state.singleStateData}/>
+                return <StateSingle currentPage={this.state.currentPage} singleStateData={this.state.singleStateData}/>
         }
     }
 

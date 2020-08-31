@@ -19,12 +19,3 @@ function StatesList(props) {
 }
 
 export default StatesList
-
-
-
-
-
-//when we click on a pineapple,
-//we want to change the state of the page to 'show'
-//have the page rerender to show that particular state's data using the StateSingle component
-//use the getSingleState function

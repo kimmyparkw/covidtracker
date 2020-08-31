@@ -12,7 +12,7 @@ authRouter.post('/login', authHelpers.loginRedirect, passport.authenticate('loca
     failureFlash: true,
 }))
 
-//GET /auth/verify - Sending back information based on login success or failure with authRouter.post('/login')
+//GET /auth/login - Sending back information based on login success or failure with authRouter.post('/login')
 authRouter.get('/login', (req, res) => {
     if (req.user) return res.status(200).json({
         message: 'User Verified',

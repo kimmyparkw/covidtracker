@@ -4,6 +4,6 @@ import React from 'react'
 
 export default function Footer() {
     return (
-        <h3>Created by Charlie, Kimmy, Shannon, and Megan</h3>
+        <footer>Created by Charlie, Kimmy, Shannon, and Megan</footer>
     )
 }

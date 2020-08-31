@@ -33,7 +33,7 @@ class App extends React.Component {
   handleFormSubmit = (method, e, data, id) => {
     const submitTernary = this.state.user ? '/user' : '/auth/login'
     e.preventDefault()
-    console.log(submitTernary, data)
+    console.log("submit data", data)
     fetch( submitTernary , { 
       method: method,
       headers: {

@@ -11,7 +11,7 @@
   align-items: center;
   background-color: rgb(66, 90, 99);
   flex-grow: 1;
-  padding: 20px;
+  padding: 50px;
 }
 
 .nav-container {
@@ -98,16 +98,19 @@ nav a {
 }
 
 footer {
+  display: flex;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color:  rgb(26, 68, 82);
   color: rgb(243, 238, 162);
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-  height: 20px; 
+  height: 50px; 
+
 }
 
 h1 {

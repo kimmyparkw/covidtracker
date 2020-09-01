@@ -6,13 +6,16 @@ class Login extends React.Component {
         super()
         this.state = ({
             method: 'POST',
+            route: '/auth/login',
         })
     }
     render() {
             return (
                 <div>
                     <h4>Login</h4>
-                    <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} />
+                    <UserForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} userState={this.props.userState} currentPage={this.props.currentPage}/>
+                    <span>New User? <a href='/user/new'>Click Here To Register</a></span>
+                    <span>{(this.props.userState.message) && this.props.userState.message}</span>
                 </div>
             )
 

@@ -75,10 +75,10 @@ class StateController extends React.Component {
   
     }
 
-    handleDelete = () => {
+    handleDelete = (serialKey) => {
         console.log("this is starting fetch")
-        console.log(this.state.currentId)
-        fetch(`/user/stats/${this.state.currentId}`, { //need to pass down the user_states id data
+        console.log(serialKey)
+        fetch(`/user/stats/${serialKey}`, { //need to pass down the user_states id data
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -114,9 +114,9 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} userSelected={this.state.userSelected} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames} save={this.saveToProfile}/>
+                return <StateSingle currentPage={this.state.currentPage} userSelectedStateData={this.state.userSelectedStateData} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} delete={this.handleDelete} user={this.state.userData} currentPage={this.state.currentPage}/>        
+                return <Profile userSelectedStateData={this.state.userSelectedStateData} userSelectedStates={this.state.userSelectedStates} fullName={this.state.fullStateNames} delete={this.handleDelete} user={this.state.userData} currentPage={this.state.currentPage}/>        
         }
     }
 

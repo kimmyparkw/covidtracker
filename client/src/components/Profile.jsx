@@ -2,14 +2,13 @@
 //includes the state snapshots
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 import StateSnapshot from './StateSnapshots.jsx'
 
 class Profile extends React.Component {
     
-    findSerialKey = () => {
-        const serialKey = selectedState.filter((el) => {
-            return el.state_id === 
+    findSerialKey = (stateId) => {
+        const serialKey = this.props.userSelectedStates.filter((el) => {
+            return el.state_id === stateId
             }
         )
     }
@@ -19,8 +18,9 @@ class Profile extends React.Component {
             <>
             <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> 
             {
-                this.props.userSelected.map((state)=> (
-                    <StateSnapshot key={state.hash} delete={this.props.delete} serialKey={} state={state} fullName={this.props.fullName} currentPage={this.props.currentPage}/>
+                this.props.userSelectedStateData.map((state)=> (
+                    this.findSerialKey(state.id),
+                    <StateSnapshot key={state.hash} delete={this.props.delete} state={state} fullName={this.props.fullName} currentPage={this.props.currentPage}/>
                 ))
             }
             </>

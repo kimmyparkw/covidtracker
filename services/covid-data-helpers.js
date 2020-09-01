@@ -57,7 +57,7 @@ const getSingleStateDetails = (req, res, next) => {
 
 const getHistoricalDetails = (req, res, next) => {
     let historicalData = []
-    UserStates.getAllByUserId(req.user.id)
+    UserStates.getDistinctStatesByUser(req.user.id)
     .then((userStates) => {
         console.log(userStates)
         const fetches = userStates.map((userState) => {
@@ -73,7 +73,10 @@ const getHistoricalDetails = (req, res, next) => {
         }))
     })
     .then((data) => {
-        console.log(data)
+        const covidData = data;
+        res.locals.stateTotals = covidData;
+        console.log(res.locals.stateTotals)
+        next()
     })     
     .catch((err) => {
         console.log(err);

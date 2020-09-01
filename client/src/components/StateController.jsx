@@ -19,8 +19,9 @@ class StateController extends React.Component {
             fireRedirect: false,
             redirectPath: null,
             fullStateNames: FullStateNames,
-            userSelected: null,
+            userSelectedStateData: null,
             userData: null,
+            selectedStates: null,
         })
     }
 
@@ -52,8 +53,10 @@ class StateController extends React.Component {
         fetch(`/user/profile`)
         .then(res => res.json())
         .then(res => {
+            console.log("userselect", res)
             this.setState({
-                userSelected: res.stateTotals,
+                userSelectedStates: res.selectedStates,
+                userSelectedStateData: res.stateTotals,
                 isLoaded: true,
                 userData: res.user,
             })
@@ -75,7 +78,7 @@ class StateController extends React.Component {
     handleDelete = () => {
         console.log("this is starting fetch")
         console.log(this.state.currentId)
-        fetch(`/user/stats/3`, {
+        fetch(`/user/stats/${this.state.currentId}`, { //need to pass down the user_states id data
             method: 'DELETE',
         })
         .then(res => res.json())

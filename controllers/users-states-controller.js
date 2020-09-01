@@ -30,7 +30,7 @@ const userStatesController = {
     destroy(req, res, next) {
         UserStates.getByStateId(req.params.id, req.params.user_id)
         .then((userState) => {
-            userState.delete()
+            return userState.delete()
         })
         .then(() => {
             res.json({

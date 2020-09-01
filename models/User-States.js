@@ -38,7 +38,7 @@ class UserStates {
                 INSERT INTO user_states
                 (user_id, state_id)
                 VALUES
-                ($/user_id/, $/state_id/)
+                ($/user_id/, UPPER($/state_id/))
                 RETURNING *
             `, this
         )

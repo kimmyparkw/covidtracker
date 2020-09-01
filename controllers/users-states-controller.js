@@ -28,9 +28,9 @@ const userStatesController = {
         .catch(next);
     },
     destroy(req, res, next) {
-        UserStates.getById(req.params.id)
+        UserStates.getByStateId(req.params.id, req.params.user_id)
         .then((userState) => {
-            return userState.delete();
+            userState.delete()
         })
         .then(() => {
             res.json({

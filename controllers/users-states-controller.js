@@ -11,6 +11,7 @@ const userStatesController = {
             res.json({
                 selectedStates: userStates,
                 stateTotals: userSelected,
+                user: req.user,
                 
             })
         })

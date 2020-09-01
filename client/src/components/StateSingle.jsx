@@ -1,9 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class StateSingle extends React.Component {
-    constructor(props) {
-        super(props)  
-    }
     
     showUsData = () => {
         return (
@@ -26,7 +24,6 @@ class StateSingle extends React.Component {
         return (
             <div className='info-container'>
                 <h1>United States COVID-19 Statistics</h1>
-                <button>Delete</button>
                 <div className='info'>
                     {/* graph goes here */}
                     <div className='stats'>
@@ -36,8 +33,9 @@ class StateSingle extends React.Component {
                         <h4>Total tests: {this.props.singleStateData.totalTestResults}</h4>
                     </div>
                     <div className='button-container'>
-                        <button>Back to all</button>
-                        <button>Back to profile</button>
+                        <Link to='/stats'>Back to all stats</Link>
+                        {this.props.userState.user && <button onClick={() => this.props.save()}>Save to profile</button>}
+                        {this.props.userState.user && <Link to='/user/profile'>Back to profile</Link>}
                     </div>
                 </div>
             </div>
@@ -48,7 +46,7 @@ class StateSingle extends React.Component {
     render() {
         return (
             <>
-                {this.props.currentPage === 'index' && this.showUsData()}
+                {(this.props.currentPage === 'index' || this.props.currentPage ==='profile') && this.showUsData()}
                 {this.props.currentPage === 'show' && this.showStateData()}
 
             </>

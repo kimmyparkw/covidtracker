@@ -2,6 +2,8 @@ import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
 import FullStateNames from './FullStateNames'
+import Profile from './Profile'
+import { Redirect } from 'react-router-dom'
 
 class StateController extends React.Component {
     constructor(props) {
@@ -13,13 +15,17 @@ class StateController extends React.Component {
             usData: null,
             currentPage: props.currentPage,
             currentId: props.currentId,
+            userState: props.userState,
             fireRedirect: false,
             redirectPath: null,
             fullStateNames: FullStateNames,
+            userSelected: null,
+            userData: null,
         })
     }
 
     getAllData = () => {
+
         fetch('/stats') 
         .then(res => res.json())
         .then(res => {
@@ -43,25 +49,59 @@ class StateController extends React.Component {
         })
     }
 
+    getUserSelected = () => {
+        fetch(`/user/profile`)
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                userSelected: res.stateTotals,
+                isLoaded: true,
+                userData: res.user,
+            })
+        })
+    }
+
     componentDidMount() {
         if (this.state.currentPage === 'index') {
             this.getAllData()
         } else if (this.state.currentPage === 'show') {
             this.getSingleState()
+        } 
+        else if(this.state.currentPage === 'profile') {
+            this.getUserSelected()
         }
   
     }
 
-    handleDelete = (id) => {
-        fetch(`/user/stats/${id}`)
+    handleDelete = () => {
+        fetch(`/user/stats/${this.state.currentId}`, {
+            method: 'DELETE',
+        })
         .then(res => res.json())
         .then(res => {
-            console.log("delete res", res)
             this.setState({
                 fireRedirect: true,
                 redirectPath: '/user/profile'
             })
+            this.getUserSelected()
+        }).catch(err => console.log(err))
+    }
+
+    saveToProfile = () => {
+        console.log(`I'm saving this`)
+        fetch(`/user/stats/${this.state.currentId}`, {
+            method: 'POST',
         })
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                fireRedirect: true,
+                redirectPath: '/user/profile'
+            })
+            console.log(`past set state section`)
+            console.log(this.state.fireRedirect)
+            this.getUserSelected();
+        }).catch(err => console.log(err))
     }
 
     decideWhichToRender() {
@@ -69,7 +109,10 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} singleStateData={this.state.singleStateData}/>
+                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
+            case 'profile':
+                return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
+                
         }
     }
 
@@ -77,6 +120,7 @@ class StateController extends React.Component {
         return (
             <div className="container">
                 {(this.state.isLoaded) ? this.decideWhichToRender() : <h1>Loading...</h1>}
+                {this.state.fireRedirect && <Redirect push to={this.state.redirectPath} />}
             </div>
         )
     }

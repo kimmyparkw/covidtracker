@@ -104,6 +104,7 @@ class StateController extends React.Component {
         }).catch(err => console.log(err))
     }
 
+
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':

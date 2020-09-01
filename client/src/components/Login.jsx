@@ -12,7 +12,7 @@ class Login extends React.Component {
             return (
                 <div>
                     <h4>Login</h4>
-                    <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} />
+                    <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} currentPage={this.props.currentPage}/>
                     <span>New User? <a href='/user/new'>Click Here To Register</a></span>
                 </div>
             )

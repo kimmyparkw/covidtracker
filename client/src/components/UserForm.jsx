@@ -26,12 +26,13 @@ class UserForm extends React.Component {
     render() {
         return(
             <div className='form-container'>
-                <h3>Edit User Info</h3>
-                <form onSubmit={(e) => this.props.handleFormSubmit(this.props.method, e, this.state, this.state.id)}>
-                    {this.props.userState.user && <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={this.handleFormChanges} />}
+                <h3>PLACEHOLDER - Edit User Info</h3>
+                {console.log(this.props)}
+                <form onSubmit={(e) => this.props.handleFormSubmit(this.props.method, e, this.state, this.props.currentPage)}>
+                    {this.props.currentPage === 'new' && <input type="text" name="email" value={this.state.email} placeholder="Email" onChange={this.handleFormChanges} />}
                     <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleFormChanges} required/>
                     <input type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleFormChanges} required/>
-                    <input type="submit" value="Login" />
+                    {this.props.currentPage === 'new' ? (<input type="submit" value="Register" />) : (<input type="submit" value="Login" />)}
                 </form>
             </div>
         )

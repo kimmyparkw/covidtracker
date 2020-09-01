@@ -12,7 +12,7 @@ class Register extends React.Component {
             return (
                 <div>
                     <h4>Register</h4>
-                    <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} />
+                    <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} currentPage={this.props.currentPage}/>
                 </div>
             )
 

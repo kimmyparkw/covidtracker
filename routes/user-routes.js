@@ -13,7 +13,7 @@ userRouter.get('/new', (req, res) => {
     })
 })
 
-//POST /user/register - User submits a new user profile
+//POST /user/new - User submits a new user profile
 userRouter.post('/new', authHelpers.loginRedirect, usersController.create)
 
 //GET /user/profile

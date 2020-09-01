@@ -31,11 +31,11 @@ class App extends React.Component {
   }
   
   
-  handleFormSubmit = (method, e, data, id) => {
-    const submitTernary = this.state.user ? '/user' : '/auth/login'
+  handleFormSubmit = (method, e, data, route) => {
+    const submitTernary = route ? '/user/new' : '/auth/login'
     e.preventDefault()
     console.log("submit data", data)
-    fetch( submitTernary , { 
+    fetch( route , { 
       method: method,
       headers: {
         'Content-Type': 'application/json',
@@ -79,12 +79,12 @@ class App extends React.Component {
         <Route exact path='/auth/login' render={() => (
           this.state.auth
               ? <Redirect to='/user/profile' />
-              : <Login handleFormSubmit={this.handleFormSubmit} userState={this.state}/>
+              : <Login handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='login'/>
         )}/>
         <Route exact path='/user/new' render={() => (
           this.state.auth
               ? <Redirect to='/user/profile'/>
-          : <Register />
+          : <Register handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='new'/>
         )} />
        </div>
        <Footer />

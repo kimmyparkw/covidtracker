@@ -83,8 +83,7 @@ class StateController extends React.Component {
                 fireRedirect: true,
                 redirectPath: '/user/profile'
             })
-            this.getAllData()
-            //fyi, this should probs be the getUserSelected() function
+            this.getUserSelected()
         }).catch(err => console.log(err))
     }
 

@@ -9,8 +9,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(66, 90, 99);
+  background-color: rgb(160, 163, 163);
   flex-grow: 1;
+  padding: 50px;
+
   
 }
 
@@ -18,8 +20,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(26, 68, 82);
+  background-color: rgb(43, 93, 110);
   padding: 0 20px;
+  border-bottom: double rgb(209, 62, 62);
 }
 
 .hero {
@@ -51,7 +54,7 @@ width: 100%;
   border-left-style: solid;
   border-radius: 5px;
   padding: 20px 25px 20px 40px; 
-  border-color: rgb(241, 145, 100);
+  border-color: rgb(190, 30, 30);
   margin-top: 15px;
 }
 
@@ -86,11 +89,12 @@ nav a {
   font-family: 'Raleway', sans-serif;
   color: rgb(243, 238, 162);
   font-weight: bold;
+  text-shadow: 2px 2px #000000;
 }
 
 .state-list a, h3 {
 
-  color:  rgb(243, 238, 162);
+  color:  rgb(26, 68,82);
   margin: 0px;
   
 }
@@ -105,19 +109,22 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color:  rgb(26, 68, 82);
+  background-color:  rgb(43, 93, 110);
   color: rgb(243, 238, 162);
   align-items: center;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   height: 50px; 
+  border-top: double rgb(209, 84, 62);
+
 
 }
 
 h1 {
   color:  rgb(243, 238, 162);
   font-family: 'Raleway', sans-serif;
+  text-shadow: 2px 2px #000000
 }
 
 /* nav {
@@ -127,16 +134,17 @@ h1 {
 */
 
 h3 {
-color: rgb(243, 238, 162);
+color: rgb(26, 68,82);
 font-family: 'Raleway', sans-serif;
+
 
 
 }
 
 
 h4 {
-  color: rgb(243, 238, 162);
-  text-decoration: underline;
+  color: rgb(58, 57, 48);
+  font-weight: boldest;
   font-family: 'Raleway', sans-serif;
 
 

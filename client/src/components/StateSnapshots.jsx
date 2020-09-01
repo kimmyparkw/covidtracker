@@ -18,7 +18,7 @@ export default function StateSnapshot(props) {
             </div>
             <div className='button-container'>
                 <Link to='/stats'>Back to all stats</Link>
-                <button onClick={() => props.delete(props.state.state)}>Delete from profile</button>
+                <button onClick={() => props.delete(props.serialKey)}>Delete from profile</button>
             </div>
         </div>
     </div>

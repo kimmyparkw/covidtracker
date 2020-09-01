@@ -2,25 +2,19 @@
 //includes the state snapshots
 
 import React from 'react'
-import StateSnapshot from './StateSnapshots.jsx'
+import StateSingle from './StateSingle'
+import HistoricalChart from './HistoricalChart';
 
 class Profile extends React.Component {
-    
-    findSerialKey = (stateId) => {
-        const serialKey = this.props.userSelectedStates.filter((el) => {
-            return el.state_id === stateId
-            }
-        )
-    }
-
+   
     render() {
         return (
             <>
-            <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> 
+            <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> <h3><a href={`/user/profile/${this.props.user.id}`}>Edit User Profile</a></h3>
             {
-                this.props.userSelectedStateData.map((state)=> (
-                    this.findSerialKey(state.id),
-                    <StateSnapshot key={state.hash} delete={this.props.delete} state={state} fullName={this.props.fullName} currentPage={this.props.currentPage}/>
+                this.props.userSelected.map((stateData, index)=> (
+                    <HistoricalChart key={stateData[index].hash} stateName={stateData[index].state} chartData={stateData} />
+
                 ))
             }
             </>

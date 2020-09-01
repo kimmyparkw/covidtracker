@@ -1,6 +1,9 @@
 require('dotenv').config();
 require("express");
 const fetch = require('node-fetch');
+const db = require('../db/config');
+const UserStates = require('../models/User-States');
+const e = require('express');
 
 
 const USTotalsURL = 'https://api.covidtracking.com/v1/us/current.json';
@@ -52,10 +55,36 @@ const getSingleStateDetails = (req, res, next) => {
 
 }
 
+const getHistoricalDetails = (req, res, next) => {
+    let historicalData = []
+    UserStates.getAllByUserId(req.user.id)
+    .then((userStates) => {
+        console.log(userStates)
+        const fetches = userStates.map((userState) => {
+            return fetch(`https://api.covidtracking.com/v1/states/${userState}/daily.json`)
+        })
+        console.log(fetches)
+        return Promise.all(fetches)
+        
+    })
+    .then((res) => {
+        return Promise.all(res.map((el) => {
+            return el.json()
+        }))
+    })
+    .then((data) => {
+        console.log(data)
+    })     
+    .catch((err) => {
+        console.log(err);
+        next(err);
+    })
+}
 
 
 module.exports = {
     getUSTotals,
     getStateTotals,
-    getSingleStateDetails
+    getSingleStateDetails,
+    getHistoricalDetails
 }

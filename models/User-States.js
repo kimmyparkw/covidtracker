@@ -6,8 +6,15 @@ class UserStates {
         this.user_id = params.user_id;
         this.state_id = params.state_id;
     }
-
     static getAllByUserId(id){
+        return db.manyOrNone(`SELECT * FROM user_states WHERE user_id = $1`, id)
+        .then((userStates) => {
+            return userStates.map((userState) => {
+                return new this(userState)
+            })
+        })
+    }
+    static getDistinctStatesByUser(id){
         return db.manyOrNone(`SELECT DISTINCT state_id FROM user_states WHERE user_id = $1`, id)
         .then((userStates) => {
             return userStates.map((userState) => {

@@ -6,8 +6,6 @@ class EditProfile extends React.Component {
         super(props)
         this.state = ({
             method: 'PUT',
-            route: '',
-            action: ''
         })
     }
     render() {

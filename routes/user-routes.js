@@ -19,7 +19,7 @@ userRouter.post('/new', authHelpers.loginRedirect, usersController.create)
 //GET /user/profile
 userRouter.get('/profile', authHelpers.loginRequired, covidDataHelpers.getStateTotals, userStatesController.index)
 
-//GET /user/edit/:id 
+//GET /user/:id 
 userRouter.get('/profile/:id', authHelpers.loginRequired, usersController.show)
 
 //PUT /user/profile/:id User has submitted an edit of their profile

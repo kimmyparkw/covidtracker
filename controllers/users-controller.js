@@ -43,11 +43,11 @@ const usersController = {
     User.getByUserId(req.params.id)
       .then((user) => {
         return user.update(req.body, user.id)
-      }).then((updatedUser) => {
+      }).then((user) => {
         res.status(201).json({
           message: 'User Profile Updated.',
           data: {
-            updatedUser,
+            user,
           }
         })
       }).catch(next)

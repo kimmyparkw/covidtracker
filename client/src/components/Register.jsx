@@ -6,13 +6,15 @@ class Register extends React.Component {
         super()
         this.state = ({
             method: 'POST',
+            route: '/user/new',
         })
+       
     }
     render() {
             return (
                 <div>
                     <h4>Register</h4>
-                    <UserForm handleFormSubmit={this.props.handleFormSubmit} method={this.state.method} userState={this.props.userState} currentPage={this.props.currentPage}/>
+                    <UserForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} userState={this.props.userState} currentPage={this.props.currentPage}/>
                 </div>
             )
 

@@ -13,13 +13,13 @@ userRouter.get('/new', (req, res) => {
     })
 })
 
-//POST /user/register - User submits a new user profile
+//POST /user/new - User submits a new user profile
 userRouter.post('/new', authHelpers.loginRedirect, usersController.create)
 
 //GET /user/profile
 userRouter.get('/profile', authHelpers.loginRequired, covidDataHelpers.getHistoricalDetails, userStatesController.index)
 
-//GET /user/edit/:id 
+//GET /user/:id 
 userRouter.get('/profile/:id', authHelpers.loginRequired, usersController.show)
 
 //PUT /user/profile/:id User has submitted an edit of their profile

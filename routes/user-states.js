@@ -10,7 +10,7 @@ const authHelpers = require('../services/auth/auth-helpers');
 
 userStatesRouter.post('/:id([a-z][a-z])', authHelpers.loginRequired, userStatesController.create);
 
-userStatesRouter.delete('/:id([0-9]+)', authHelpers.loginRequired, userStatesController.destroy);
+userStatesRouter.delete('/:user_id([0-9]+)/:id([a-z][a-z])', authHelpers.loginRequired, userStatesController.destroy);
 
 
 module.exports = userStatesRouter;

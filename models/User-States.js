@@ -31,8 +31,8 @@ class UserStates {
         });
     }
 
-    static getByStateId(id){
-        return db.oneOrNone(`SELECT * FROM user_states WHERE state_id = $1`, id)
+    static getByStateId(state_id, user_id){
+        return db.oneOrNone(`SELECT * FROM user_states WHERE state_id = $1 AND user_id = $2`, [state_id, user_id])
         .then((userState) => {
             if(userState) return new this(userState);
             throw new Error('US user state not found!');
@@ -55,7 +55,10 @@ class UserStates {
     }
 
     delete(){
-        return db.oneOrNone(`DELETE FROM user_states WHERE id = $1`, this.id);
+        return db.oneOrNone(`DELETE FROM user_states WHERE state_id = $1 AND user_id = $2`, [this.state_id, this.user_id])
+        .then((userState) => {
+
+        })
     }
 }
 

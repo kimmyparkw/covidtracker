@@ -15,7 +15,7 @@ const FullStateNames ={
     'IN': 'Indiana',
     'IA': 'Iowa',
     'KS': 'Kansas',
-    'KY': 'Kentucy',
+    'KY': 'Kentucky',
     'LA': 'Louisiana',
     'ME': 'Maine',
     'MD': 'Maryland',

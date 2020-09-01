@@ -8,7 +8,7 @@ import About from './components/About.jsx'
 import StateController from './components/StateController.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
-import Profile from './components/Profile.jsx'
+import EditProfile from './components/EditProfile'
 
 class App extends React.Component {
   constructor() {
@@ -16,10 +16,12 @@ class App extends React.Component {
     this.state = {
       auth: false,
       user: null,
+      message: null
     }
   }
-
+  
   componentDidMount = () => {
+    console.log("Auth Check on Component Did Mount...(GET 400 Will follow if no current user logged in)", this.auth)
     fetch('/auth/login', { credentials: 'include' })
       .then(res => res.json())
       .then(res => {
@@ -31,26 +33,28 @@ class App extends React.Component {
   }
   
   
-  handleFormSubmit = (method, e, data, id) => {
-    const submitTernary = this.state.user ? '/user' : '/auth/login'
+  handleFormSubmit = (method, e, data, route) => {
     e.preventDefault()
     console.log("submit data", data)
-    fetch( submitTernary , { 
+    fetch(route, { 
       method: method,
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
       body: JSON.stringify(data),
-    }) .then(res => res.json())
+    }).then(res => res.json())
     .then(res => {
       console.log("submit res", res)
       this.setState({
+        message: res.message,
         auth: res.auth,
         user: res.data.user,
       })
-    }).catch(err => console.log(err))
-
+      
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   logout = () => {
@@ -75,16 +79,17 @@ class App extends React.Component {
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
         <Route exact path='/user/profile' render={() => (<StateController currentPage='profile' />)} />
+        <Route exact path='/user/profile/:id' render={() => (<EditProfile component={this.componentDidMount} handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='edit'/>)}/>  
         <Route exact path='/stats/:id' render={props => (<StateController currentPage='show' currentId={props.match.params.id} userState={this.state}/>)} />
         <Route exact path='/auth/login' render={() => (
           this.state.auth
-          ? <Redirect to='/user/profile' />
-              : <Login handleFormSubmit={this.handleFormSubmit} userState={this.state}/>
+              ? <Redirect to='/user/profile' />
+              : <Login handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='login'/>
         )}/>
         <Route exact path='/user/new' render={() => (
           this.state.auth
-          ? <Redirect to='/user/profile' />
-          : <Register />
+              ? <Redirect to='/user/profile'/>
+          : <Register handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='new'/>
         )} />
        </div>
        <Footer />

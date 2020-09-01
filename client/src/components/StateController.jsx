@@ -3,6 +3,7 @@ import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
 import FullStateNames from './FullStateNames'
 import Profile from './Profile'
+import { Redirect } from 'react-router-dom'
 
 class StateController extends React.Component {
     constructor(props) {
@@ -82,7 +83,24 @@ class StateController extends React.Component {
                 fireRedirect: true,
                 redirectPath: '/user/profile'
             })
-            this.getAllData()
+            this.getUserSelected()
+        }).catch(err => console.log(err))
+    }
+
+    saveToProfile = () => {
+        console.log(`I'm saving this`)
+        fetch(`/user/stats/${this.state.currentId}`, {
+            method: 'POST',
+        })
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                fireRedirect: true,
+                redirectPath: '/user/profile'
+            })
+            console.log(`past set state section`)
+            console.log(this.state.fireRedirect)
+            this.getUserSelected();
         }).catch(err => console.log(err))
     }
 
@@ -91,10 +109,9 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames}/>
+                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage}/>
-                
+                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage}/>        
         }
     }
 
@@ -102,6 +119,7 @@ class StateController extends React.Component {
         return (
             <div className="container">
                 {(this.state.isLoaded) ? this.decideWhichToRender() : <h1>Loading...</h1>}
+                {this.state.fireRedirect && <Redirect push to={this.state.redirectPath} />}
             </div>
         )
     }

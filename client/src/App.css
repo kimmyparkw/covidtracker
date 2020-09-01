@@ -11,7 +11,7 @@
   align-items: center;
   background-color: rgb(66, 90, 99);
   flex-grow: 1;
-  padding: 50px;
+  
 }
 
 .nav-container {
@@ -26,6 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .hero-text {
@@ -37,8 +38,9 @@
 }
 
 .hero-image {
-max-width: 500px;
+/* max-width: 500px; */
 border-radius: 5px;
+width: 100%;
 
 } 
 

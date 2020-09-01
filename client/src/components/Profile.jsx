@@ -2,7 +2,8 @@
 //includes the state snapshots
 
 import React from 'react'
-import StateSingle from './StateSingle'
+import { Link } from 'react-router-dom'
+import StateSnapshot from './StateSnapshots.jsx'
 
 class Profile extends React.Component {
     
@@ -11,8 +12,8 @@ class Profile extends React.Component {
             <>
             <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> 
             {
-                this.props.userSelected.map((stateData)=> (
-                    <StateSingle key={stateData.hash} usData={stateData} fullName={this.props.fullName} currentPage={this.props.currentPage}/>
+                this.props.userSelected.map((state)=> (
+                    <StateSnapshot key={state.hash} delete={this.props.delete} state={state} fullName={this.props.fullName} currentPage={this.props.currentPage}/>
                 ))
             }
             </>

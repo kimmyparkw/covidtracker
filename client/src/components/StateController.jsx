@@ -41,7 +41,6 @@ class StateController extends React.Component {
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
         .then(res => {
-            console.log("single state", res)
             this.setState({
                 singleStateData: res.singleState,
                 isLoaded: true,
@@ -74,11 +73,14 @@ class StateController extends React.Component {
     }
 
     handleDelete = () => {
-        fetch(`/user/stats/${this.state.currentId}`, {
+        console.log("this is starting fetch")
+        console.log(this.state.currentId)
+        fetch(`/user/stats/3`, {
             method: 'DELETE',
         })
         .then(res => res.json())
         .then(res => {
+            console.log("delete", res)
             this.setState({
                 fireRedirect: true,
                 redirectPath: '/user/profile'
@@ -109,9 +111,9 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames} save={this.saveToProfile}/>
+                return <StateSingle currentPage={this.state.currentPage} userSelected={this.state.userSelected} userState={this.state.userState} singleStateData={this.state.singleStateData} fullName={this.state.fullStateNames} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage}/>        
+                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} delete={this.handleDelete} user={this.state.userData} currentPage={this.state.currentPage}/>        
         }
     }
 

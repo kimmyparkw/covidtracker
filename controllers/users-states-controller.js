@@ -4,7 +4,6 @@ const userStatesController = {
     index(req, res, next) {
         UserStates.getAllByUserId(req.user.id)
         .then((userStates) => {
-            console.log(userStates)
             res.json({
                 selectedStates: userStates,
                 stateTotals: res.locals.stateTotals,

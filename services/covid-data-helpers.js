@@ -26,7 +26,6 @@ const getStateTotals = (req, res, next) => {
     fetch(`${stateTotalsURL}`)
     .then((res) => res.json())
     .then((data) => {
-        // console.log(res)
         let covidData = data;
         res.locals.stateTotals = covidData;
         next();
@@ -41,7 +40,6 @@ const getSingleStateDetails = (req, res, next) => {
     fetch(`https://api.covidtracking.com/v1/states/${req.params.id}/current.json`)
     .then((res) => res.json())
     .then((data) => {
-        // console.log(req.params.id)
         let covidData = data;
         res.locals.singleState = covidData;
         next();
@@ -54,7 +52,6 @@ const getSingleStateDetails = (req, res, next) => {
 }
 
 const getHistoricalDetails = (req, res, next) => {
-    let historicalData = []
     UserStates.getDistinctStatesByUser(req.user.id)
     .then((userStates) => {
         console.log(userStates)

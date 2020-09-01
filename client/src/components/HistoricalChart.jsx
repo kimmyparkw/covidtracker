@@ -64,7 +64,7 @@ export default class HistoricalChart extends Component{
                 options={{
                 title:{
                     display:true,
-                    text:'Confirmed and Probable Positives by Day*',
+                    text:`${this.props.stateName} Confirmed and Probable Positives by Day*`,
                     fontSize:20
                 },
                 legend:{

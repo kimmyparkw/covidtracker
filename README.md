@@ -7,7 +7,7 @@ unit 3 project: COVID-19 tracker react app.
 |User can browse US Country and State COVID totals| `GET /stats`|
 |User can select a US state and see more info| `GET /stats/:id`|
 |User can save a US state to profile| `POST /user/stats/:id`|
-|User can delete a US state from profile| `DELETE /user/stats/:id`|
+|User can delete a US state from profile| `DELETE /user/stats/:user_id/:state_id/`|
 |User can update email or password| `PUT /user/profile/:id`|
 |User can click on a US state in profile to see more| `GET /stats/:id`|
 |User can view their profile| `GET /user/profile`|

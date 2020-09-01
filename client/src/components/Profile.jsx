@@ -3,6 +3,7 @@
 
 import React from 'react'
 import StateSingle from './StateSingle'
+import HistoricalChart from './HistoricalChart';
 
 class Profile extends React.Component {
     
@@ -11,8 +12,8 @@ class Profile extends React.Component {
             <>
             <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> 
             {
-                this.props.userSelected.map((stateData)=> (
-                    <StateSingle key={stateData.hash} usData={stateData} currentPage={this.props.currentPage}/>
+                this.props.userSelected.map((stateData, index)=> (
+                    <HistoricalChart key={stateData[index].hash} chartData={stateData} />
                 ))
             }
             </>

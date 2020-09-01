@@ -8,7 +8,6 @@ import About from './components/About.jsx'
 import StateController from './components/StateController.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
-import Profile from './components/Profile.jsx'
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +34,7 @@ class App extends React.Component {
     const submitTernary = this.state.user ? '/user' : '/auth/login'
     e.preventDefault()
     console.log("submit data", data)
-    fetch( submitTernary , { 
+    fetch(submitTernary , { 
       method: method,
       headers: {
         'Content-Type': 'application/json',

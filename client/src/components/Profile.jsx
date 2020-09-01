@@ -11,7 +11,7 @@ class Profile extends React.Component {
             <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> 
             {
                 this.props.userSelected.map((stateData)=> (
-                    <StateSingle key={stateData.hash} usData={stateData} currentPage={this.props.currentPage}/>
+                    <StateSingle key={stateData.hash} usData={stateData} fullName={this.props.fullName} currentPage={this.props.currentPage}/>
                 ))
             }
             </>

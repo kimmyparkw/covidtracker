@@ -10,7 +10,7 @@ statsRouter.get('/', covidDataHelpers.getUSTotals, covidDataHelpers.getStateTota
 })
 
 //GET /stats/:id - return selected State Data - two letter state code required (ex: GA, CA)
-statsRouter.get('/:id', covidDataHelpers.getSingleStateDetails, (req, res) => {
+statsRouter.get('/:id', covidDataHelpers.getSingleStateDetails, covidDataHelpers.getSingleStateHistoricals, (req, res) => {
     res.json(res.locals)
 })
 

@@ -74,9 +74,10 @@ class StateController extends React.Component {
   
     }
 
-    handleDelete = () => {
+    handleDelete = (id) => {
         console.log(this.state.userData)
-        fetch(`/user/stats/${this.state.userData.id}/${this.state.currentId}`, {
+        console.log('delete current', this.state.currentId)
+        fetch(`/user/stats/${this.state.userData.id}/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -114,7 +115,7 @@ class StateController extends React.Component {
             case 'show':
                 return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
+                return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
                 
         }
     }

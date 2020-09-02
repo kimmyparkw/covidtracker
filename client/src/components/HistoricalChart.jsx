@@ -60,7 +60,7 @@ export default class HistoricalChart extends Component{
     render() {
         return(
           <>
-          <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
+            <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
             <div>
                 <Line
                 data={this.state}
@@ -69,15 +69,16 @@ export default class HistoricalChart extends Component{
                     display:true,
                     text:`Confirmed and Probable Positives by Day*`,
                     fontSize:20
-                },
+                  },
                 legend:{
                     display:true,
                     position:'right'
-                }
-        }}
-      />
+                  }
+                 }}
+                />
             </div>
-            </>
+            <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
+          </>
         )
     }
 

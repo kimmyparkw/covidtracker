@@ -71,8 +71,9 @@ const getSingleStateHistoricals = (req, res, next) => {
     .then((res) => res.json())
     .then((data) => {
         let covidData = data;
-        const results = weeklyHelper(covidData);
+        let results = weeklyHelper(covidData);
         res.locals.singleStateHist = results;
+        next();
     })
     .catch((err) => {
         console.log(err);

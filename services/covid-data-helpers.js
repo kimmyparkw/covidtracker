@@ -8,14 +8,15 @@ const UserStates = require('../models/User-States');
 const USTotalsURL = 'https://api.covidtracking.com/v1/us/current.json';
 const stateTotalsURL = 'https://api.covidtracking.com/v1/states/current.json';
 
-const weeklyHelper = (data) => {
+const dateHelper = (data, datePart) => {
     const output = data.reduce((accum, current) => {
-        const date = moment(current.date.toString()).startOf('week').format('MM-DD');
+        const date = moment(current.date.toString()).startOf(datePart).format('MM-DD');
         if(!accum[date]){
-            accum[date] = current.positiveIncrease
+            accum[date] = [current.positiveIncrease, current.totalTestResultsIncrease]
         }
         else{
-            accum[date] += current.positiveIncrease
+            accum[date][0] += current.positiveIncrease
+            accum[date][1] += current.totalTestResultsIncrease
         }
         return accum
     }, {})
@@ -71,8 +72,10 @@ const getSingleStateHistoricals = (req, res, next) => {
     .then((res) => res.json())
     .then((data) => {
         let covidData = data;
-        let results = weeklyHelper(covidData);
-        res.locals.singleStateHist = results;
+        let month = dateHelper(covidData, 'month');
+        let week = dateHelper(covidData, 'week')
+        res.locals.singleStateMonth = month;
+        res.locals.singleStateWeek = week;
         next();
     })
     .catch((err) => {

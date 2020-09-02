@@ -76,7 +76,7 @@ class StateController extends React.Component {
 
     handleDelete = (id) => {
         console.log(this.state.userData)
-        console.log('delete current', this.state.currentId)
+        console.log('delete current', id)
         fetch(`/user/stats/${this.state.userData.id}/${id}`, {
             method: 'DELETE',
         })

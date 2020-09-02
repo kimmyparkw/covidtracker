@@ -38,11 +38,9 @@ class StateController extends React.Component {
     }
 
     getSingleState = () => {
-        console.log('current id',this.state.currentId)
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
         .then(res => {
-            console.log("single state", res)
             this.setState({
                 singleStateData: res.singleState,
                 isLoaded: true,
@@ -75,8 +73,6 @@ class StateController extends React.Component {
     }
 
     handleDelete = (id) => {
-        console.log(this.state.userData)
-        console.log('delete current', id)
         fetch(`/user/stats/${this.state.userData.id}/${id}`, {
             method: 'DELETE',
         })

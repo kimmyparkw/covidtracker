@@ -7,8 +7,13 @@ import React from 'react'
 export default function About() {
     return(
         <div className='hero'>
-            <img className='hero-image' src="https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/9/18/918c6f23-36fa-5acb-9aef-6001fa5e3de5/5f15ab9a06304.image.jpg?resize=1200%2C677" alt="covid-virus" />
-            <h3 className='hero-text'>Lorem ipsum blah blah blah</h3>
+            <div className="hero-title-text">
+                <h1>About this app</h1>
+                <h3 className='hero-text'>Due to the lack of clear and accessible information, it can be difficult for the public to remain properly informed of current COVID-19 statistics in various U.S. states or territories. Our hope is that, by creating this info-tracking website, you will be able to focus on data relevant to your specific locations of interest. This will allow you to safely make informed decisions based on dynamic data that is presented in a visually comprehensible way.</h3>  
+            </div>
+            
+            <img className='hero-image' src="https://www.lanl.gov/newsroom/_assets/images/science1.png" alt="covid-virus" />
+            
         </div>
     )
 }

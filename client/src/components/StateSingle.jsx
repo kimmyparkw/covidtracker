@@ -23,7 +23,7 @@ class StateSingle extends React.Component {
     showStateData = () => {
         return (
             <div className='info-container'>
-                <h1>United States COVID-19 Statistics</h1>
+                <h1>{this.props.fullName[this.props.singleStateData.state]} COVID-19 Statistics</h1>
                 <div className='info'>
                     {/* graph goes here */}
                     <div className='stats'>

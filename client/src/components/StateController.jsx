@@ -38,6 +38,7 @@ class StateController extends React.Component {
     }
 
     getSingleState = () => {
+        console.log('current id',this.state.currentId)
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
         .then(res => {
@@ -74,7 +75,8 @@ class StateController extends React.Component {
     }
 
     handleDelete = () => {
-        fetch(`/user/stats/${this.state.userData.id}/${this.state.state_id}`, {
+        console.log(this.state.userData)
+        fetch(`/user/stats/${this.state.userData.id}/${this.state.currentId}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -110,9 +112,9 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
+                return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
+                return <Profile userSelected={this.state.userSelected} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
                 
         }
     }

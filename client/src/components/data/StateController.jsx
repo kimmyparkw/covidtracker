@@ -1,8 +1,8 @@
 import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
-import FullStateNames from './FullStateNames'
-import Profile from './Profile'
+import FullStateNames from './FullStateNames.jsx'
+import Profile from '../user/Profile.jsx'
 import { Redirect } from 'react-router-dom'
 
 class StateController extends React.Component {
@@ -41,7 +41,6 @@ class StateController extends React.Component {
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
         .then(res => {
-            console.log("single state", res)
             this.setState({
                 singleStateData: res.singleState,
                 isLoaded: true,
@@ -73,8 +72,8 @@ class StateController extends React.Component {
   
     }
 
-    handleDelete = () => {
-        fetch(`/user/stats/${this.state.currentId}`, {
+    handleDelete = (id) => {
+        fetch(`/user/stats/${this.state.userData.id}/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -110,9 +109,9 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
+                return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
+                return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
                 
         }
     }

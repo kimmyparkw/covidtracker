@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
+import {Link} from 'react-router-dom'
 import moment from 'moment';
 
 export default class HistoricalChart extends Component{
@@ -58,22 +59,26 @@ export default class HistoricalChart extends Component{
 
     render() {
         return(
+          <>
+            <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
             <div>
                 <Line
                 data={this.state}
                 options={{
                 title:{
                     display:true,
-                    text:`${this.props.stateName} Confirmed and Probable Positives by Day*`,
+                    text:`Confirmed and Probable Positives by Day*`,
                     fontSize:20
-                },
+                  },
                 legend:{
                     display:true,
                     position:'right'
-                }
-        }}
-      />
+                  }
+                 }}
+                />
             </div>
+            <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
+          </>
         )
     }
 

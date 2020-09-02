@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom'
 import './App.css';
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
-import Home from './components/Home.jsx'
-import About from './components/About.jsx'
-import StateController from './components/StateController.jsx'
-import Login from './components/Login.jsx'
-import Register from './components/Register.jsx'
-import EditProfile from './components/EditProfile'
+import Header from './components/stateless/Header.jsx'
+import Footer from './components/stateless/Footer.jsx'
+import Home from './components/stateless/Home.jsx'
+import About from './components/stateless/About.jsx'
+import StateController from './components/data/StateController.jsx'
+import Login from './components/user/Login.jsx'
+import Register from './components/user/Register.jsx'
+import EditProfile from './components/user/EditProfile.jsx'
 
 class App extends React.Component {
   constructor() {

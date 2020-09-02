@@ -1,5 +1,5 @@
 import React from 'react'
-import EditForm from './EditForm'
+import EditForm from './EditForm.jsx'
 
 class EditProfile extends React.Component {
     constructor(props) {

@@ -67,6 +67,25 @@ const getSingleStateDetails = (req, res, next) => {
 
 }
 
+const getCountryHistoricals = (req, res, next) => {
+    fetch(`https://api.covidtracking.com/v1/us/daily.json`)
+    .then((res) => res.json())
+    .then((data) => {
+        let covidData = data;
+        let month = dateHelper(covidData, 'month');
+        let week = dateHelper(covidData, 'week');
+        res.locals.country = data;
+        res.locals.countryMonth = month;
+        res.locals.countryWeek = week;
+        next();
+    })
+    .catch((err) => {
+        console.log(err);
+        next(err);
+    })
+
+}
+
 const getSingleStateHistoricals = (req, res, next) => {
     fetch(`https://api.covidtracking.com/v1/states/${req.params.id}/daily.json`)
     .then((res) => res.json())
@@ -119,6 +138,7 @@ module.exports = {
     getStateTotals,
     getSingleStateDetails,
     getSingleStateHistoricals,
+    getCountryHistoricals,
     getHistoricalDetails
 }
 

@@ -5,7 +5,7 @@ const authHelpers = require('../services/auth/auth-helpers')
 const covidDataHelpers = require('../services/covid-data-helpers')
 
 //GET /stats - returns all US Totals Data
-statsRouter.get('/', covidDataHelpers.getUSTotals, covidDataHelpers.getStateTotals, (req, res) => {
+statsRouter.get('/', covidDataHelpers.getUSTotals, covidDataHelpers.getStateTotals, covidDataHelpers.getCountryHistoricals, (req, res) => {
     res.json(res.locals)
 })
 

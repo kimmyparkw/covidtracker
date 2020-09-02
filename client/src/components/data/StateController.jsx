@@ -1,8 +1,8 @@
 import React from 'react'
 import StatesList from './StatesList.jsx'
 import StateSingle from './StateSingle.jsx'
-import FullStateNames from './FullStateNames'
-import Profile from './Profile'
+import FullStateNames from './FullStateNames.jsx'
+import Profile from '../user/Profile.jsx'
 import { Redirect } from 'react-router-dom'
 
 class StateController extends React.Component {

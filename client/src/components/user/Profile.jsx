@@ -2,8 +2,7 @@
 //includes the state snapshots
 
 import React from 'react'
-import StateSingle from './StateSingle'
-import HistoricalChart from './HistoricalChart';
+import HistoricalChart from '../data/HistoricalChart.jsx';
 
 class Profile extends React.Component {
    

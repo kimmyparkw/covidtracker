@@ -1,11 +1,12 @@
 //includes the logo and the nav
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Logo from '../../covidlogo.png'
 
 export default function Header(props) {
     return (
         <div className="nav-container">
-            <h1>Logo will go here</h1>
+            <img src={Logo} alt='logo'/>
             <nav>
                 <Link to='/'>Home</Link>
                 <Link to='/about'>About</Link>

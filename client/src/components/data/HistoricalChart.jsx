@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
+<<<<<<< HEAD:client/src/components/HistoricalChart.jsx
 import {Line, Bar} from 'react-chartjs-2';
+=======
+import {Line} from 'react-chartjs-2';
+import {Link} from 'react-router-dom'
+>>>>>>> dac197f6349e8b0b78e8a3eeea22f472f5476e91:client/src/components/data/HistoricalChart.jsx
 import moment from 'moment';
 
 class HistoricalChart extends Component{
@@ -53,6 +58,7 @@ class HistoricalChart extends Component{
       
     
 
+<<<<<<< HEAD:client/src/components/HistoricalChart.jsx
   }
   
   render() {
@@ -124,6 +130,32 @@ class HistoricalChart extends Component{
       <Bar data={this.data} legend={this.legend} options={this.options} />
       </div>)
   }
+=======
+    render() {
+        return(
+          <>
+            <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
+            <div>
+                <Line
+                data={this.state}
+                options={{
+                title:{
+                    display:true,
+                    text:`Confirmed and Probable Positives by Day*`,
+                    fontSize:20
+                  },
+                legend:{
+                    display:true,
+                    position:'right'
+                  }
+                 }}
+                />
+            </div>
+            <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
+          </>
+        )
+    }
+>>>>>>> dac197f6349e8b0b78e8a3eeea22f472f5476e91:client/src/components/data/HistoricalChart.jsx
 
 
 }

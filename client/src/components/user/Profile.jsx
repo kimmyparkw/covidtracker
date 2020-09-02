@@ -2,8 +2,7 @@
 //includes the state snapshots
 
 import React from 'react'
-import StateSingle from './StateSingle'
-import HistoricalChart from './HistoricalChart';
+import HistoricalChart from '../data/HistoricalChart.jsx';
 
 class Profile extends React.Component {
    
@@ -13,7 +12,7 @@ class Profile extends React.Component {
             <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> <h3><a href={`/user/profile/${this.props.user.id}`}>Edit User Profile</a></h3>
             {
                 this.props.userSelected.map((stateData, index)=> (
-                    <HistoricalChart key={stateData[index].hash} stateName={stateData[index].state} chartData={stateData} />
+                    <HistoricalChart key={stateData[index].hash} delete={this.props.delete} fullName={this.props.fullName} stateName={stateData[index].state} chartData={stateData} />
 
                 ))
             }

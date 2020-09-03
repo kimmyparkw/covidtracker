@@ -104,6 +104,21 @@ const getSingleStateHistoricals = (req, res, next) => {
 
 }
 
+const getSingleStateMeta = (req, res, next) => {
+    fetch(`https://api.covidtracking.com/v1/states/ca/info.json`)
+    .then((res) => res.json())
+    .then((data) => {
+        let covidData = data;
+        res.locals.singleStateMeta = covidData;
+        next();
+    })
+    .catch((err) => {
+        console.log(err);
+        next(err);
+    })
+
+}
+
 const getHistoricalDetails = (req, res, next) => {
     UserStates.getDistinctStatesByUser(req.user.id)
     .then((userStates) => {
@@ -138,6 +153,7 @@ module.exports = {
     getStateTotals,
     getSingleStateDetails,
     getSingleStateHistoricals,
+    getSingleStateMeta,
     getCountryHistoricals,
     getHistoricalDetails
 }

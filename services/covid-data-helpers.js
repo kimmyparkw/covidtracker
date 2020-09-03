@@ -67,6 +67,25 @@ const getSingleStateDetails = (req, res, next) => {
 
 }
 
+const getCountryHistoricals = (req, res, next) => {
+    fetch(`https://api.covidtracking.com/v1/us/daily.json`)
+    .then((res) => res.json())
+    .then((data) => {
+        let covidData = data;
+        let month = dateHelper(covidData, 'month');
+        let week = dateHelper(covidData, 'week');
+        res.locals.country = data;
+        res.locals.countryMonth = month;
+        res.locals.countryWeek = week;
+        next();
+    })
+    .catch((err) => {
+        console.log(err);
+        next(err);
+    })
+
+}
+
 const getSingleStateHistoricals = (req, res, next) => {
     fetch(`https://api.covidtracking.com/v1/states/${req.params.id}/daily.json`)
     .then((res) => res.json())
@@ -76,6 +95,21 @@ const getSingleStateHistoricals = (req, res, next) => {
         let week = dateHelper(covidData, 'week')
         res.locals.singleStateMonth = month;
         res.locals.singleStateWeek = week;
+        next();
+    })
+    .catch((err) => {
+        console.log(err);
+        next(err);
+    })
+
+}
+
+const getSingleStateMeta = (req, res, next) => {
+    fetch(`https://api.covidtracking.com/v1/states/ca/info.json`)
+    .then((res) => res.json())
+    .then((data) => {
+        let covidData = data;
+        res.locals.singleStateMeta = covidData;
         next();
     })
     .catch((err) => {
@@ -119,6 +153,8 @@ module.exports = {
     getStateTotals,
     getSingleStateDetails,
     getSingleStateHistoricals,
+    getSingleStateMeta,
+    getCountryHistoricals,
     getHistoricalDetails
 }
 

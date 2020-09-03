@@ -38,7 +38,7 @@ class StateSingle extends React.Component {
                 </div>
                 <div className="state-contact">
                     <h4>State Covid Twitter:</h4>
-                    <p><a href={`https://twitter.com/${this.props.singleStateMeta.twitter}?ref_src=twsrc%5Etfw`} rel="noopener noreferrer" target='_blank'class="twitter-follow-button" data-show-count="false">Follow {this.props.singleStateMeta.twitter}</a></p>
+                    <p><a href={`https://twitter.com/${this.props.singleStateMeta.twitter}?ref_src=twsrc%5Etfw`} rel="noopener noreferrer" target='_blank'className="twitter-follow-button" data-show-count="false">Follow {this.props.singleStateMeta.twitter}</a></p>
                 </div>    
                     <h4 className="state-notes-header">State Notes:</h4>
                     <p className="state-notes">{this.props.singleStateMeta.notes}</p>

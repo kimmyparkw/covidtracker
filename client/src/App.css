@@ -157,6 +157,14 @@ State Single Page
 
 }
 
+.historical-buttons {
+  display: flex;
+  margin: 10px;
+  /* min-width: 100vw;
+  justify-content: space-around; */
+
+}
+
 .chart {
   display: flex;
   flex-direction: column;

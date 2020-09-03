@@ -34,7 +34,6 @@ class App extends React.Component {
   
   
   handleFormSubmit = (method, e, data, route) => {
-    this.setState({ showMessage: true })
     e.preventDefault()
     console.log("submit data", data)
     fetch(route, { 
@@ -51,7 +50,6 @@ class App extends React.Component {
         message: res.message,
         auth: res.auth,
         user: res.data.user,
-        showMessage: true,
       })
       
     }).catch(err => {

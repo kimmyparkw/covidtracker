@@ -25,7 +25,6 @@ class StateSingle extends React.Component {
             <div className='info-container'>
                 <h1>{this.props.fullName[this.props.singleStateData.state]} COVID-19 Statistics</h1>
                 <div className='info'>
-                    {console.log(this.props)}
                     <HistoricalChart key={this.props.singleStateData.hash} delete={this.props.delete} fullName={this.props.fullName} stateName={this.props.singleStateData.state} chartData={this.props.singleStateHistorical} />
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.singleStateData.positive}</h4>

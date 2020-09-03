@@ -55,13 +55,13 @@ class StateController extends React.Component {
     getUserSelected = () => {
         fetch(`/user/profile`)
         .then(res => res.json())
-            .then(res => {
+        .then(res => {
             this.setState({
                 userSelected: res.stateTotals,
                 isLoaded: true,
                 userData: res.user,
             })
-        }) 
+        })
     }
 
     componentDidMount() {

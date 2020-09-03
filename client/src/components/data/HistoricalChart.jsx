@@ -103,16 +103,6 @@ class HistoricalChart extends Component{
         yAxes: [
           {
             type: 'linear',
-            lable: "Shannon",
-            display: true,
-            scaleLabel: {
-              fontColor: 'red',
-              labelString: "Test"
-            }
-            ,
-            options: {
-              display: true,
-            },
             position: 'left',
             id: 'y-axis-2',
             gridLines: {
@@ -129,20 +119,15 @@ class HistoricalChart extends Component{
               autoSkipPadding: 15,
               callback: function (value, index, values) {
                 return value + "%";
-            }
+              }
             },
-          
           },
           {
             type: 'linear',
-            display: true,
             position: 'right',
             id: 'y-axis-1',
             gridLines: {
               display: true
-            },
-            labels: {
-              show: true
             },
             ticks: {
               min: 0,

@@ -15,6 +15,9 @@ class StateController extends React.Component {
             singleStateHistorical: null,
             singleStateMeta: null,
             usData: null,
+            usDaily: null,
+            usWeek: null,
+            usMonth: null,
             currentPage: props.currentPage,
             currentId: props.currentId,
             userState: props.userState,
@@ -35,6 +38,9 @@ class StateController extends React.Component {
                 isLoaded: true,
                 allStateData: res.stateTotals,
                 usData: res.usTotals,
+                usDaily: res.country,
+                usWeek: res.countryWeek,
+                usMonth: res.countryMonth,
             })
         })
     }
@@ -111,7 +117,7 @@ class StateController extends React.Component {
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':
-                return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
+                return <StatesList usData={this.state.usData} usDaily={this.state.usDaily} usWeek={this.state.usWeek} usMonth={this.state.usMonth} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
                 return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} singleStateHistorical={this.state.singleStateHistorical} singleStateMeta={this.state.singleStateMeta} save={this.saveToProfile}/>
             case 'profile':

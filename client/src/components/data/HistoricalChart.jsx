@@ -133,6 +133,9 @@ class HistoricalChart extends Component{
               min: 0,
               autoSkip: true,
               autoSkipPadding: 15,
+              callback: function (value, index, values) {
+                return value.toLocaleString('en');
+              }
             }
           }
         ],

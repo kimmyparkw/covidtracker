@@ -10,10 +10,10 @@ class StateSingle extends React.Component {
                 <div className='info'>
                     {/* graph goes here */}
                     <div className='stats'>
-                        <h4>Total positive cases: {this.props.usData.positive}</h4>
-                        <h4>Total negative cases: {this.props.usData.negative}</h4>
-                        <h4>Total recovered: {this.props.usData.recovered}</h4>
-                        <h4>Total tests: {this.props.usData.totalTestResults}</h4>
+                        <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
+                        <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>
+                        <h4>Total recovered: {this.props.usData.recovered.toLocaleString()}</h4>
+                        <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4>
                     </div>
                 </div> 
             </>
@@ -27,10 +27,10 @@ class StateSingle extends React.Component {
                 <div className='info'>
                     <HistoricalChart key={this.props.singleStateData.hash} delete={this.props.delete} fullName={this.props.fullName} stateName={this.props.singleStateData.state} chartData={this.props.singleStateHistorical} />
                     <div className='stats'>
-                        <h4>Total positive cases: {this.props.singleStateData.positive}</h4>
-                        <h4>Total negative cases: {this.props.singleStateData.negative}</h4>
-                        <h4>Total recovered: {this.props.singleStateData.recovered}</h4>
-                        <h4>Total tests: {this.props.singleStateData.totalTestResults}</h4>
+                        <h4>Total positive cases: {this.props.singleStateData.positive.toLocaleString()}</h4>
+                        <h4>Total negative cases: {this.props.singleStateData.negative.toLocaleString()}</h4>
+                        <h4>Total recovered: {this.props.singleStateData.recovered.toLocaleString()}</h4>
+                        <h4>Total tests: {this.props.singleStateData.totalTestResults.toLocaleString()}</h4>
                     </div>
                     <div className='state-meta'>
                         <h4>State Website: {this.props.singleStateMeta.covid19Site}</h4>

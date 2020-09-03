@@ -47,7 +47,7 @@ export default class HistoricalChart extends Component{
                       fill: false,
                       lineTension: 0.5,
                       backgroundColor: 'rgba(75,192,192,1)',
-                      borderColor: 'rgba(0,0,0,1)',
+                      borderColor: '#45A29E',
                       borderWidth: 2,
                     data: result2
                 }
@@ -59,9 +59,9 @@ export default class HistoricalChart extends Component{
 
     render() {
         return(
-          <>
+          <div className='profile-chart'>
             <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
-            <div>
+            <div className='state-graph'>
                 <Line
                 data={this.state}
                 options={{
@@ -78,7 +78,7 @@ export default class HistoricalChart extends Component{
                 />
             </div>
             <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
-          </>
+          </div>
         )
     }
 

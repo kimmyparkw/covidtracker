@@ -12,11 +12,15 @@ function StatesList(props) {
             <div className='info-container'>
                 <StateSingle currentPage={props.currentPage} usData={props.usData} />
             </div>
-            <div className='state-list'>
-                {props.allStateData.map((state) => {
-                    return <Link to={`/stats/${state.state}`} key={state.hash}><h3>{props.fullName[state.state]}</h3></Link>
-                })}
+            <div className="state-list-container">
+                <h1>States and Territories</h1>
+                <div className='state-list'>
+                    {props.allStateData.map((state) => {
+                        return <Link to={`/stats/${state.state}`} key={state.hash}><h3>{props.fullName[state.state]}</h3></Link>
+                    })}
+                </div>
             </div>
+            
         </>
     )
 }

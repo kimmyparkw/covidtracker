@@ -25,12 +25,14 @@
   align-items: center;
   background-color: #0B0C10;
   flex-grow:1;
+  padding: 0 50px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  width: 100%;
 }
 
 /*HEADER*/
@@ -109,14 +111,16 @@ footer {
 
 
 .info-container {
-  border-top-style: dotted;
+  /* border-top-style: dotted;
   border-right-style: solid;
-  border-bottom-style: dotted;
+ 
   border-left-style: solid;
-  border-radius: 5px;
+  border-radius: 5px; 
+*/
   padding: 20px 25px 20px 40px; 
-  border-color: #EE6C4D;
   margin-top: 15px;
+  border-bottom-style: solid;
+  border-color: #E65D4F;
 }
 
 .info {
@@ -131,11 +135,31 @@ footer {
   flex-wrap: wrap;
 }
 
+.state-list a:hover {
+  color: #45A29E;
+}
+
+.state-list-container {
+  padding: 0 40px;
+}
+
+/*STATE PAGE*/
+
+.button-container a {
+  font-family: 'Montserrat', sans-serif;
+  background: #c4c6c7;
+  color: #1F2833;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 9px 9px 9px 0 rgb(58, 57, 48); 
+}
+
+.button-container a:active {
+  background: #45A29E;
+}
 
 /*
-.button-container {
 
-}
 
 .form-container {
 
@@ -148,8 +172,9 @@ footer {
 
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
-  color: #66FCF1
+  font-family: 'Noto Serif', serif;
+  color: #66FCF1;
+  font-size: 3em;
 }
 
 /* nav {
@@ -168,6 +193,7 @@ h1 {
 
 .state-list {
   margin-top: 15px;
+  height: 1340px;
 }
 /* 
 h3 {
@@ -177,7 +203,7 @@ font-family: 'Montserrat', sans-serif;
 
 
 h4 {
-  color: #45A29E;
+  color: #c4c6c7;
   font-weight: bolder;
   font-family: 'Montserrat', sans-serif;
 }
@@ -189,3 +215,28 @@ button {
 }
  */
 
+/*PROFILE*/
+
+.welcome {
+  margin-bottom: 10px;
+}
+
+.edit-user-link {
+  color: #E85A4F;
+  margin: 0;
+}
+
+.profile-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.profile-chart a {
+  color: #c4c6c7;
+}
+
+.profile-chart button {
+  margin: 30px;
+}

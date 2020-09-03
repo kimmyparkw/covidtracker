@@ -78,7 +78,11 @@ class App extends React.Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/stats' render={() => (<StateController currentPage='index' />)} />
-        <Route exact path='/user/profile' render={() => (<StateController currentPage='profile' />)} />
+        <Route exact path='/user/profile' render={() => (
+          this.state.auth
+          ? <StateController currentPage='profile' />
+          : <Redirect to='/auth/login' />
+          )} />
         <Route exact path='/user/profile/:id' render={() => (<EditProfile component={this.componentDidMount} handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='edit'/>)}/>  
         <Route exact path='/stats/:id' render={props => (<StateController currentPage='show' currentId={props.match.params.id} userState={this.state}/>)} />
         <Route exact path='/auth/login' render={() => (

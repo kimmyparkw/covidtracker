@@ -11,8 +11,7 @@ function StatesList(props) {
     return (
         <>
             <div className='info-container'>
-                <HistoricalChart chartData={props.usDaily} />
-                <StateSingle currentPage={props.currentPage} usData={props.usData} />
+                <StateSingle currentPage={props.currentPage} chartData={props.usDaily} usData={props.usData} />
             </div>
             <div className="state-list-container">
                 <h1>States and Territories</h1>

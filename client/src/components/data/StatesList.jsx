@@ -5,11 +5,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import StateSingle from './StateSingle.jsx'
+import HistoricalChart from './HistoricalChart.jsx'
 
 function StatesList(props) {
     return (
         <>
             <div className='info-container'>
+                <HistoricalChart chartData={props.usDaily} />
                 <StateSingle currentPage={props.currentPage} usData={props.usData} />
             </div>
             <div className='state-list'>

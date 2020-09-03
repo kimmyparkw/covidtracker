@@ -29,7 +29,7 @@ class StateSingle extends React.Component {
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.singleStateData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.singleStateData.negative.toLocaleString()}</h4>
-                        <h4>Total recovered: {this.props.singleStateData.recovered.toLocaleString()}</h4>
+                        <h4>Total recovered: {this.props.singleStateData.recovered ? this.props.singleStateData.recovered.toLocaleString() : ("Not Available")}</h4>
                         <h4>Total tests: {this.props.singleStateData.totalTestResults.toLocaleString()}</h4>
                     </div>
                     <div className='state-meta'>

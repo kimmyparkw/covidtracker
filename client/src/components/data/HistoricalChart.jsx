@@ -124,7 +124,7 @@ class HistoricalChart extends Component{
       title: {
         display: true,
         fontSize: 18,
-        text: `${this.props.stateName} Confirmed and Probable Positives by ${this.state.dataView}*`
+        text: `${this.props.stateName || 'US'} Confirmed and Probable Positives by ${this.state.dataView}*`
       },
       scales: {
         yAxes: [
@@ -190,7 +190,8 @@ class HistoricalChart extends Component{
           <>
             <div>
               <div>
-                {this.props.currentPage === 'show'  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
+                {console.log(this.props, this.props.currentPage)}
+                {(this.props.currentPage === 'show' || this.props.currentPage === 'index')  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
                 <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
               </div>
             </div>
@@ -198,8 +199,6 @@ class HistoricalChart extends Component{
           </>
         )
     }
-
-
 }
 
 export default HistoricalChart

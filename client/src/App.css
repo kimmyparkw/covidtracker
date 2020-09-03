@@ -17,6 +17,7 @@ canvas {
   width: 400px;
 }
 
+
 .App {
   display: flex;
   flex-direction: column;
@@ -32,6 +33,10 @@ canvas {
   flex-grow: 1;  
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+}
 /*HEADER*/
 
 .nav-container {

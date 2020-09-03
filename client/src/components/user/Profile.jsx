@@ -9,18 +9,22 @@ class Profile extends React.Component {
    
     render() {
         return (
-            <>
-            <h1>{`Welcome Back, ${this.props.user.username}!`}</h1> <h3><a href={`/user/profile/${this.props.user.id}`}>Edit User Profile</a></h3>
-            {
-                    this.props.userSelected.map((stateData, index) => (
-                    <>
-                    <Link to={`/stats/${stateData[index].state}`}><h2>{this.props.fullName[stateData[index].state]}</h2></Link>
-                    <HistoricalChart key={stateData[index].hash} delete={this.props.delete} fullName={this.props.fullName} stateName={stateData[index].state} chartData={stateData} />
-                    <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
-                    </>
-                ))
-            }
-            </>
+            <div className='profile-container'>
+                <h1 className='welcome'>{`Welcome back, ${this.props.user.username}!`}</h1>
+                <h3 className='edit-user-link'><a className='edit-user-link' href={`/user/profile/${this.props.user.id}`}>Edit User Profile</a></h3>
+                <div className="saved-states-container">
+                {
+                        this.props.userSelected.map((stateData, index) => (
+                        <div className="saved-state">
+                            <Link to={`/stats/${stateData[index].state}`}><h2>{this.props.fullName[stateData[index].state]}</h2></Link>
+                            <HistoricalChart key={stateData[index].hash} delete={this.props.delete} fullName={this.props.fullName} stateName={stateData[index].state} chartData={stateData} />
+                            <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
+                        </div>
+                    ))
+                }
+                </div>
+
+            </div>
         )
     }
 }

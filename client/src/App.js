@@ -90,7 +90,8 @@ class App extends React.Component {
           this.state.auth
               ? <Redirect to='/user/profile'/>
           : <Register handleFormSubmit={this.handleFormSubmit} userState={this.state} currentPage='new'/>
-        )} />
+          )} />
+        <Route exact path='/auth/logout' component={Home}/>  
        </div>
        <Footer />
       </div>

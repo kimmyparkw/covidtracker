@@ -93,6 +93,7 @@ const getSingleStateHistoricals = (req, res, next) => {
         let covidData = data;
         let month = dateHelper(covidData, 'month');
         let week = dateHelper(covidData, 'week')
+        res.locals.singleStateHistorical = covidData;
         res.locals.singleStateMonth = month;
         res.locals.singleStateWeek = week;
         next();
@@ -105,7 +106,7 @@ const getSingleStateHistoricals = (req, res, next) => {
 }
 
 const getSingleStateMeta = (req, res, next) => {
-    fetch(`https://api.covidtracking.com/v1/states/ca/info.json`)
+    fetch(`https://api.covidtracking.com/v1/states/${req.params.id}/info.json`)
     .then((res) => res.json())
     .then((data) => {
         let covidData = data;

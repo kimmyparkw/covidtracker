@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import StateChart from './charts/StateChart'
 import HistoricalChart from './HistoricalChart'
 class StateSingle extends React.Component {
     

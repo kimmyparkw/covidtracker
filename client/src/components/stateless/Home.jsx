@@ -11,7 +11,7 @@ export default function Home() {
                 <h1 className='hero-title'>Welcome to our Covid-19 tracking app!</h1>
                 <h3 className='hero-text'>It is our hope that the data presented here on this website will empower you by providing accurate and up-to-date information about Covid-19 in the United States.</h3>
             </div>
-            <img className='hero-image' src="https://www.lanl.gov/newsroom/_assets/images/science1.png" alt="covid-virus" />
+            <img className='hero-image' src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/SARS-CoV-2_without_background.png/765px-SARS-CoV-2_without_background.png" alt="covid-virus" />
         </div>
 
     )

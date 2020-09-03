@@ -21,7 +21,8 @@ canvas {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
+  padding-right: 10px;
+  background-color: #0B0C10;
 }
 
 .main {
@@ -145,6 +146,22 @@ footer {
 .state-list-container {
   padding: 0 40px;
 }
+
+.hero-image {
+  height: 23em;
+  animation: covidrotation 10s infinite linear;
+  margin-right: 20px;
+}
+
+@keyframes covidrotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 
 /*STATE PAGE*/
 

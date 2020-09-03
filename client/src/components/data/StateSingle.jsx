@@ -8,7 +8,8 @@ class StateSingle extends React.Component {
             <>
                 <h1>United States COVID-19 Statistics</h1>
                 <div className='info'>
-                    <HistoricalChart chartData={this.props.chartData} />
+                    {console.log(this.props)}
+                    <HistoricalChart currentPage={this.props.currentPage} dailyChartData={this.props.dailyChartData} weeklyChartData={this.props.weeklyChartData} monthlyChartData={this.props.monthlyChartData} />
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>

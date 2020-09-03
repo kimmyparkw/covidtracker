@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Line, Bar} from 'react-chartjs-2';
-import {Link} from 'react-router-dom'
 import moment from 'moment';
 
 class HistoricalChart extends Component{
@@ -59,7 +58,6 @@ class HistoricalChart extends Component{
       labels: this.state.xAxis,
       datasets: [
         { 
-          
           label: "% Test Results Positive",
           type: 'line',
           data: this.state.yAxisLeft,
@@ -70,6 +68,7 @@ class HistoricalChart extends Component{
           yAxisID: 'y-axis-2',
           borderWidth: 1,
           pointRadius: 1.5, 
+          spanGaps: true,
         },
         {
           label: "Daily Tests",
@@ -105,6 +104,7 @@ class HistoricalChart extends Component{
             type: 'linear',
             position: 'left',
             id: 'y-axis-2',
+            responsive: true,
             gridLines: {
               display: false
             },
@@ -161,7 +161,7 @@ class HistoricalChart extends Component{
             <div>
               <div>
                 <button value={30} onClick={this.clickBtn}>+30 Days</button><button value={-30} onClick={this.clickBtn}>-30 Days</button>
-                <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
+                <Bar width={450} className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
               </div>
             </div>
               

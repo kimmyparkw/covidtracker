@@ -121,7 +121,7 @@ class StateController extends React.Component {
             case 'show':
                 return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} singleStateHistorical={this.state.singleStateHistorical} singleStateMeta={this.state.singleStateMeta} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
+                return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState } usData={this.state.usData} usDaily={this.state.usDaily} usWeek={this.state.usWeek} usMonth={this.state.usMonth}/>
                 
         }
     }

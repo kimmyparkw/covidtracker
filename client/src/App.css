@@ -12,9 +12,15 @@
   TEAL: 45A29E
 */
 
+/*TESTING CHART STYLING - CAN BE DELETED - SM*/
 canvas {
   background-color: darkgrey;
-  width: 400px;
+ 
+}
+/*TESTING CHART STYLING - CAN BE DELETED - SM*/
+.state-meta{
+  
+  border: white solid 2x;
 }
 
 .App {

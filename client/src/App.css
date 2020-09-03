@@ -12,8 +12,9 @@
   TEAL: 45A29E
 */
 
+
 canvas {
-  background-color: darkgrey;
+  background-color: #121c2b;
   width: 400px;
 }
 
@@ -254,9 +255,8 @@ button {
   align-items: center;
   margin-top: 40px;
   padding: 10px 20px;
-  border: 1px solid #66FCF1;
-  border-radius: 10px;
-  box-shadow: 7px 4px 20px 0 #45A29E;
+  border: 1px solid #45a29e;
+  border-radius: 5px;
 }
 
 .saved-state a, h2 {

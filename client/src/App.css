@@ -33,10 +33,7 @@ canvas {
   flex-grow: 1;  
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-}
+
 /*HEADER*/
 
 .nav-container {
@@ -136,7 +133,57 @@ footer {
   flex-wrap: wrap;
 }
 
+/* 
+State Single Page
+*/
 
+
+.stats-outer-container{
+  display: flex;
+}
+.stats-container-left {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+
+}
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.state-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+
+}
+
+.state-notes {
+  color: #c4c6c7;
+  max-width: 20em;
+
+}
+
+/* .test {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+} */
+
+.stats-container-right {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.total-stats {
+  color: #45A29E;
+}
 /*
 .button-container {
 
@@ -149,6 +196,9 @@ footer {
   
 
 }  
+
+/* Login/Register */
+
 .login-page {
   text-align: center;
 }

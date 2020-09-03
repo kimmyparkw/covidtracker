@@ -22,15 +22,21 @@ class StateSingle extends React.Component {
 
     showStateData = () => {
         return (
+            <>
+            
+            <h1>{this.props.fullName[this.props.singleStateData.state]} COVID-19 Statistics</h1>
+        <div className="stats-outer-container">
             <div className='stats-container-left'>
-                <div className='info'>
-                    <h1>{this.props.fullName[this.props.singleStateData.state]} COVID-19 Statistics</h1>
+                <div className='chart'>
                     <HistoricalChart key={this.props.singleStateData.hash} delete={this.props.delete} fullName={this.props.fullName} stateName={this.props.singleStateData.state} chartData={this.props.singleStateHistorical} />
                 </div> 
                 <div className='state-meta'>
-                    <h4>State Website: {this.props.singleStateMeta.covid19Site}</h4>
+                    <h4>State Website:</h4> 
+                    <p className="state-notes">{this.props.singleStateMeta.covid19Site}</p>
                     <h4>State Covid Twitter: {this.props.singleStateMeta.twitter}</h4>
-                    <h4>State Notes: {this.props.singleStateMeta.notes}</h4> 
+                    <h4>State Notes:</h4>
+                    <p className="state-notes">{this.props.singleStateMeta.notes}</p>
+                    
                 </div>
                 <div className='button-container'>
                     <Link to='/stats'>Back to all stats</Link>
@@ -41,13 +47,14 @@ class StateSingle extends React.Component {
             </div>
             <div className='stats-container-right'>
                 <div className='total-stats'>
-                    <h4>Total positive cases: {this.props.singleStateData.positive.toLocaleString()}</h4>
-                    <h4>Total negative cases: {this.props.singleStateData.negative.toLocaleString()}</h4>
-                    <h4>Total recovered: {this.props.singleStateData.recovered.toLocaleString()}</h4>
-                    <h4>Total tests: {this.props.singleStateData.totalTestResults.toLocaleString()}</h4>
+                    <h3>Total positive cases: {this.props.singleStateData.positive.toLocaleString()}</h3>
+                    <h3>Total negative cases: {this.props.singleStateData.negative.toLocaleString()}</h3>
+                    <h3>Total recovered: {this.props.singleStateData.recovered.toLocaleString()}</h3>
+                    <h3>Total tests: {this.props.singleStateData.totalTestResults.toLocaleString()}</h3>
                 </div>    
             </div>
-           
+        </div>    
+           </>
 
 
         )

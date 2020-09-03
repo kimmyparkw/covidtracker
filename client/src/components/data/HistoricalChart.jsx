@@ -8,64 +8,61 @@ class HistoricalChart extends Component{
     super(props)
     this.state = {
       labels: null,
-      result: null,
-      result2: null,
-      result3: null,
+      xAxis: null,
+      yAxisRight: null,
+      yAxisLeft: null,
       dataRange: 30,
     }
-    
   }
     
-    componentDidMount() {
-      this.chartDataFormatter()
-    }
+  componentDidMount() {
+    this.chartDataFormatter()
+  }
   
   clickBtn = (e) => {
-    this.setState({ dataRange: this.state.dataRange + e.target.value })
-    console.log(this.state.dataRange, e.target.value)
-    this.chartDataFormatter()
-   }
-  
+    this.setState({ dataRange: this.state.dataRange + parseInt(e.target.value) }, this.chartDataFormatter)
+  }
+ 
   chartDataFormatter = () => {
     const days = this.props.chartData.map((day) => {
-      
       return (moment(day.date.toString()).format('MM-DD'))
     })
-    const result = days.filter((date, index) => {
+    const xAxis = days.filter((date, index) => {
       return index < this.state.dataRange
     }).reverse()
     
-    const values2 = this.props.chartData.map((day) => {
+    const yAxisRight = this.props.chartData.map((day) => {
       return parseInt(day.totalTestResultsIncrease)
-    })
-    const result3 = values2.filter((date, index) => {
+    }).filter((date, index) => {
       return index < this.state.dataRange
     }).reverse()
     
-    const values = this.props.chartData.map((day) => {
+    const yAxisLeft = this.props.chartData.map((day) => {
       return parseInt((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
-    })
-    const result2 = values.filter((date, index) => {
+    }).filter((date, index) => {
       return index < this.state.dataRange
     }).reverse()
 
     this.setState({
-      result3: result3,
-      result2: result2,
-      result: result,
-      dataRange: this.state.dataRange + 30
+      yAxisRight: yAxisRight,
+      yAxisLeft: yAxisLeft,
+      xAxis: xAxis,
+      
     })
+
+    
   
   }
   
   render() {
     this.data = {
-      labels: this.state.result,
+      labels: this.state.xAxis,
       datasets: [
         { 
-          label: "% Positive Cases",
+          
+          label: "% Test Results Positive",
           type: 'line',
-          data: this.state.result2,
+          data: this.state.yAxisLeft,
           fill: false,
           backgroundColor: "#1D3557",
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
@@ -77,11 +74,11 @@ class HistoricalChart extends Component{
         {
           label: "Daily Tests",
           type: 'bar',
-          data: this.state.result3,
+          data: this.state.yAxisRight,
           fill: true,
           backgroundColor: "#A8DADC",
           borderColor: "#457B9D",
-          yAxisID: 'y-axis-1'
+          yAxisID: 'y-axis-1',
         }
       ]
     };
@@ -98,7 +95,6 @@ class HistoricalChart extends Component{
     this.options = {
       tooltips: { enabled: true },
       duration: 500,
-      easing: 'string',
       title: {
         display: true,
         text: `${this.props.stateName} Confirmed and Probable Positives by Day*`
@@ -107,12 +103,16 @@ class HistoricalChart extends Component{
         yAxes: [
           {
             type: 'linear',
+            lable: "Shannon",
+            display: true,
             scaleLabel: {
               fontColor: 'red',
               labelString: "Test"
             }
             ,
-            display: true,
+            options: {
+              display: true,
+            },
             position: 'left',
             id: 'y-axis-2',
             gridLines: {
@@ -148,8 +148,6 @@ class HistoricalChart extends Component{
               min: 0,
               autoSkip: true,
               autoSkipPadding: 15,
-              
-              
             }
           }
         ],
@@ -172,14 +170,15 @@ class HistoricalChart extends Component{
       }
     };
     
-    
+  
+
         return(
           <>
             <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
             <div>
               <div>
-                <button value='30' onClick={this.clickBtn}>+30 Days</button><button value='-30' onClick={this.clickBtn}>-30 Days</button>
-                <Bar data={this.data} legend={this.legend} options={this.options} state={this.state}/>
+                <button value={30} onClick={this.clickBtn}>+30 Days</button><button value={-30} onClick={this.clickBtn}>-30 Days</button>
+                <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
                 <p>You clicked {this.state.dataRange}{console.log("Console", this.state.dataRange)}</p>
               </div>
             </div>

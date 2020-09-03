@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import StateChart from './charts/StateChart'
+import HistoricalChart from './HistoricalChart'
 class StateSingle extends React.Component {
     
     showUsData = () => {
@@ -26,7 +27,7 @@ class StateSingle extends React.Component {
                 <h1>{this.props.fullName[this.props.singleStateData.state]} COVID-19 Statistics</h1>
                 <div className='info'>
                     {console.log(this.props)}
-                    <StateChart statistics={this.props}/>
+                    <HistoricalChart statistics={this.props}/>
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.singleStateData.positive}</h4>
                         <h4>Total negative cases: {this.props.singleStateData.negative}</h4>

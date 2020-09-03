@@ -40,6 +40,7 @@ authRouter.get('/logout', (req, res) => {
             user: null
         }
     })
+    
 })
 
 module.exports = authRouter

@@ -40,13 +40,13 @@ class HistoricalChart extends Component{
     }).reverse()
     
     const yAxisRight = this.props.dailyChartData.map((day) => {
-      return parseInt(day.totalTestResultsIncrease)
+      return parseFloat(day.totalTestResultsIncrease)
     }).filter((date, index) => {
       return index < 30
     }).reverse()
     
     const yAxisLeft = this.props.dailyChartData.map((day) => {
-      return parseInt((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
+      return parseFloat((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
     }).filter((date, index) => {
       return index < 30
     }).reverse()

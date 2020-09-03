@@ -118,23 +118,20 @@ footer {
 
 
 .info-container {
-  /* border-top-style: dotted;
-  border-right-style: solid;
- 
-  border-left-style: solid;
-  border-radius: 5px; 
-*/
   padding: 20px 25px 20px 40px; 
   margin-top: 15px;
   border-bottom-style: solid;
   border-color: #E65D4F;
+  display: flex;
+  flex-direction: column;
 }
 
 .info {
   color: rgb(216, 188, 165);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-
 
 .state-list {
   display: flex;

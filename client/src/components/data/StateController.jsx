@@ -51,7 +51,6 @@ class StateController extends React.Component {
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
             .then(res => {
-                console.log(res)
             this.setState({
                 singleStateData: res.singleState,
                 singleStateHistorical: res.singleStateHistorical,

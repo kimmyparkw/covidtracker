@@ -15,12 +15,7 @@
 /*TESTING CHART STYLING - CAN BE DELETED - SM*/
 canvas {
   background-color: darkgrey;
- 
-}
-/*TESTING CHART STYLING - CAN BE DELETED - SM*/
-.state-meta{
-  
-  border: white solid 2x;
+  width: 400px;
 }
 
 .App {

@@ -15,7 +15,7 @@ class HistoricalChart extends Component{
   }
   
   componentDidMount() {
-    (this.chartDataFormatter())
+    this.chartDataFormatter()
   }
   
   clickBtn = (e) => {
@@ -190,7 +190,6 @@ class HistoricalChart extends Component{
           <>
             <div>
               <div>
-                {console.log(this.props, this.props.currentPage)}
                 {(this.props.currentPage === 'show' || this.props.currentPage === 'index')  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
                 <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
               </div>

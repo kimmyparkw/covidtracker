@@ -14,7 +14,7 @@
 
 canvas {
   background-color: #121c2b;
-  width: 400px;
+  width: 40em;
 }
 
 
@@ -147,11 +147,13 @@ State Single Page
 
 .stats-outer-container{
   display: flex;
+  justify-content: flex-start;
 }
 .stats-container-left {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: flex-start;
+  flex-grow: .2;
 
 }
 
@@ -170,26 +172,38 @@ State Single Page
 
 }
 
+.state-notes-header {
+  margin-bottom: .5em;
+}
+
 .state-notes {
   color: #c4c6c7;
-  max-width: 20em;
+  max-width: 30em;
 
 }
 
-/* .test {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-} */
 
 .stats-container-right {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  padding: 2em;
+  align-items: flex-start;
+  flex-grow: .8;
 }
 
 .total-stats {
   color: #45A29E;
+}
+
+.state-meta a {
+  color: #a99cbb;
+  padding: 10px;
+}
+
+.state-contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 /*
 .button-container {

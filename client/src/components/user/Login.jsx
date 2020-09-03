@@ -11,7 +11,7 @@ class Login extends React.Component {
     }
     render() {
             return (
-                <div>
+                <div className="login-page">
                     <h4>Login</h4>
                     <UserForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} userState={this.props.userState} currentPage={this.props.currentPage}/>
                     <span className="new-user">New User? <a href='/user/new'>Click Here To Register</a></span>

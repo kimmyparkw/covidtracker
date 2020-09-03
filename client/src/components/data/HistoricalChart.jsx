@@ -170,19 +170,16 @@ class HistoricalChart extends Component{
       }
     };
     
-  
-
         return(
           <>
-            <Link to={`/stats/${this.props.stateName}`}><h2>{this.props.fullName[this.props.stateName]}</h2></Link>
+            
             <div>
               <div>
                 <button value={30} onClick={this.clickBtn}>+30 Days</button><button value={-30} onClick={this.clickBtn}>-30 Days</button>
                 <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
-                <p>You clicked {this.state.dataRange}{console.log("Console", this.state.dataRange)}</p>
               </div>
             </div>
-              <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
+              
           </>
         )
     }

@@ -12,6 +12,8 @@ class StateController extends React.Component {
             isLoaded: false,
             allStateData: null,
             singleStateData: null,
+            singleStateHistorical: null,
+            singleStateMeta: null,
             usData: null,
             currentPage: props.currentPage,
             currentId: props.currentId,
@@ -40,9 +42,12 @@ class StateController extends React.Component {
     getSingleState = () => {
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
-        .then(res => {
+            .then(res => {
+            console.log(res)
             this.setState({
                 singleStateData: res.singleState,
+                singleStateHistorical: res.singleStateHistorical,
+                singleStateMeta: res.singleStateMeta,
                 isLoaded: true,
             })
         })
@@ -51,13 +56,14 @@ class StateController extends React.Component {
     getUserSelected = () => {
         fetch(`/user/profile`)
         .then(res => res.json())
-        .then(res => {
+            .then(res => {
+            console.log(res)
             this.setState({
                 userSelected: res.stateTotals,
                 isLoaded: true,
                 userData: res.user,
             })
-        })
+        }) 
     }
 
     componentDidMount() {
@@ -109,7 +115,7 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} save={this.saveToProfile}/>
+                return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} singleStateHistorical={this.state.singleStateHistorical} singleStateMeta={this.state.singleStateMeta} save={this.saveToProfile}/>
             case 'profile':
                 return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState}/>
                 

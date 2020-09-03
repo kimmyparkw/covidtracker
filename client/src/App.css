@@ -179,7 +179,7 @@ footer {
 h1 {
   font-family: 'Noto Serif', serif;
   color: #66FCF1;
-  font-size: 3em;
+  font-size: 4em;
 }
 
 /* nav {
@@ -213,35 +213,68 @@ h4 {
   font-family: 'Montserrat', sans-serif;
 }
 
-/*
+
 button {
-
-
+  background: #c4c6c7;
+  color: #1F2833;
+  border-radius: 6px;
+  height: 2em;
+  width: 12em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  margin: 5px 5px;
 }
- */
+
 
 /*PROFILE*/
 
 .welcome {
   margin-bottom: 10px;
+  font-size: 4em;
 }
 
 .edit-user-link {
-  color: #E85A4F;
+  color: #E65D4F;
   margin: 0;
+  margin-bottom: 20px;
+  padding-bottom: 50px;
+  border-bottom-style: solid;
+}
+
+.saved-states-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.saved-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.saved-state a, h2 {
+  margin: 10px 0 0 0;
+  color: #E65D4F;
+  font-size: 1.5em;
 }
 
 .profile-chart {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px 0;
 }
 
 .profile-chart a {
   color: #c4c6c7;
 }
 
-.profile-chart button {
+.saved-state button {
   margin: 30px;
+}
+
+.state-graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

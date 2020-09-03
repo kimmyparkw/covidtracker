@@ -158,7 +158,9 @@ class HistoricalChart extends Component{
         return(
           <div className='profile-chart'>
             <div className='state-graph'>
+              <div className='historical-buttons'>
               <button value={30} onClick={this.clickBtn}>+30 Days</button><button value={-30} onClick={this.clickBtn}>-30 Days</button>
+              </div>
               <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
             </div>
           </div>

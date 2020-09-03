@@ -17,8 +17,8 @@ class Profile extends React.Component {
                         this.props.userSelected.map((stateData, index) => (
                         <div className="saved-state">
                             <Link to={`/stats/${stateData[index].state}`}><h2>{this.props.fullName[stateData[index].state]}</h2></Link>
-                            <HistoricalChart key={stateData[index].hash} delete={this.props.delete} fullName={this.props.fullName} stateName={stateData[index].state} chartData={stateData} />
-                            <button onClick={() => this.props.delete(this.props.stateName)}>Delete from profile</button>
+                            <HistoricalChart key={stateData[index].hash} delete={this.props.delete} fullName={this.props.fullName} stateName={stateData[index].state} dailyChartData={stateData} />
+                            <button onClick={() => this.props.delete([stateData[index].state])}>Delete from profile</button>
                         </div>
                     ))
                 }

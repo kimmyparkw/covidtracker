@@ -8,7 +8,8 @@ class StateSingle extends React.Component {
             <>
                 <h1>United States COVID-19 Statistics</h1>
                 <div className='info'>
-                    <HistoricalChart chartData={this.props.chartData} />
+                    {console.log(this.props)}
+                    <HistoricalChart currentPage={this.props.currentPage} dailyChartData={this.props.dailyChartData} weeklyChartData={this.props.weeklyChartData} monthlyChartData={this.props.monthlyChartData} />
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>
@@ -25,16 +26,16 @@ class StateSingle extends React.Component {
             <div className='info-container'>
                 <h1>{this.props.fullName[this.props.singleStateData.state]} COVID-19 Statistics</h1>
                 <div className='info'>
-                    <HistoricalChart key={this.props.singleStateData.hash} delete={this.props.delete} fullName={this.props.fullName} stateName={this.props.singleStateData.state} chartData={this.props.singleStateHistorical} />
+                    <HistoricalChart currentPage={this.props.currentPage} key={this.props.singleStateData.hash} delete={this.props.delete} fullName={this.props.fullName} stateName={this.props.singleStateData.state} dailyChartData={this.props.singleStateHistorical} monthlyChartData={this.props.singleStateMonth} weeklyChartData={this.props.singleStateWeek}/>
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.singleStateData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.singleStateData.negative.toLocaleString()}</h4>
-                        <h4>Total recovered: {this.props.singleStateData.recovered.toLocaleString()}</h4>
+                        <h4>Total recovered: {this.props.singleStateData.recovered ? this.props.singleStateData.recovered.toLocaleString() : ("Not Available")}</h4>
                         <h4>Total tests: {this.props.singleStateData.totalTestResults.toLocaleString()}</h4>
                     </div>
                     <div className='state-meta'>
-                        <h4>State Website: {this.props.singleStateMeta.covid19Site}</h4>
-                        <h4>State Covid Twitter: {this.props.singleStateMeta.twitter}</h4>
+                        <h4>State Website: <a href={this.props.singleStateMeta.covid19Site} rel="noopener noreferrer" target='_blank'>{this.props.fullName[this.props.singleStateData.state]} Covid Data Source</a></h4>
+                        <h4>State Covid Twitter: <a href={`https://twitter.com/${this.props.singleStateMeta.twitter}?ref_src=twsrc%5Etfw`} rel="noopener noreferrer" target='_blank'class="twitter-follow-button" data-show-count="false">Follow {this.props.singleStateMeta.twitter}</a></h4>
                         <h4>State Notes: {this.props.singleStateMeta.notes}</h4> 
                     </div>
                     <div className='button-container'>

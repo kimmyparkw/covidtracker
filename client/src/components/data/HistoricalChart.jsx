@@ -11,36 +11,44 @@ class HistoricalChart extends Component{
       xAxis: null,
       yAxisRight: null,
       yAxisLeft: null,
-      dataRange: 30,
+      dataView: 'Day',
     }
   }
-    
+  
   componentDidMount() {
     this.chartDataFormatter()
   }
   
   clickBtn = (e) => {
-    this.setState({ dataRange: this.state.dataRange + parseInt(e.target.value) }, this.chartDataFormatter)
+    if (e.target.value === 'Month') {
+      this.setState({ chartData: this.props.monthlyChartData })
+    } else if (e.target.value === 'Week') {
+      this.setState({ chartData: this.props.weeklyChartData })
+    } else if (e.target.value === 'Day') {
+      this.setState({ chartData: this.props.dailyChartData })
+    }
+    this.setState({ dataView: e.target.value }, this.chartDataFormatter)
+    
   }
  
   chartDataFormatter = () => {
-    const days = this.props.chartData.map((day) => {
+    if (this.state.dataView === 'Day') {
+    const xAxis = this.props.dailyChartData.map((day) => {
       return (moment(day.date.toString()).format('MM-DD'))
-    })
-    const xAxis = days.filter((date, index) => {
-      return index < this.state.dataRange
+    }).filter((date, index) => {
+      return index < 30
     }).reverse()
     
-    const yAxisRight = this.props.chartData.map((day) => {
-      return parseInt(day.totalTestResultsIncrease)
+    const yAxisRight = this.props.dailyChartData.map((day) => {
+      return parseFloat(day.totalTestResultsIncrease)
     }).filter((date, index) => {
-      return index < this.state.dataRange
+      return index < 30
     }).reverse()
     
-    const yAxisLeft = this.props.chartData.map((day) => {
-      return parseInt((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
+    const yAxisLeft = this.props.dailyChartData.map((day) => {
+      return parseFloat((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
     }).filter((date, index) => {
-      return index < this.state.dataRange
+      return index < 30
     }).reverse()
 
     this.setState({
@@ -49,9 +57,28 @@ class HistoricalChart extends Component{
       xAxis: xAxis,
       
     })
-
-    
+    } else if (this.state.dataView === 'Month' || 'Week') {
+     
+      const xAxis = Object.keys(this.state.chartData).map((el) => {
+        return el
+      }).reverse()
+      
+      const yAxisRight = Object.values(this.state.chartData).map((el) => {
+        return el[1]
+      }).reverse()
+      
+      const yAxisLeft = Object.values(this.state.chartData).map((el) => {
+        return ((el[0] / el[1]) * 100)
+      }).reverse()
   
+      this.setState({
+        yAxisRight: yAxisRight,
+        yAxisLeft: yAxisLeft,
+        xAxis: xAxis,
+        
+      })
+      } 
+
   }
   
   render() {
@@ -59,7 +86,6 @@ class HistoricalChart extends Component{
       labels: this.state.xAxis,
       datasets: [
         { 
-          
           label: "% Test Results Positive",
           type: 'line',
           data: this.state.yAxisLeft,
@@ -70,6 +96,7 @@ class HistoricalChart extends Component{
           yAxisID: 'y-axis-2',
           borderWidth: 1,
           pointRadius: 1.5, 
+          spanGaps: true,
         },
         {
           label: "Daily Tests",
@@ -97,7 +124,8 @@ class HistoricalChart extends Component{
       duration: 500,
       title: {
         display: true,
-        text: `${this.props.stateName} Confirmed and Probable Positives by Day*`
+        fontSize: 18,
+        text: `${this.props.stateName || 'US'} Confirmed and Probable Positives by ${this.state.dataView}*`
       },
       scales: {
         yAxes: [
@@ -105,6 +133,7 @@ class HistoricalChart extends Component{
             type: 'linear',
             position: 'left',
             id: 'y-axis-2',
+            responsive: true,
             gridLines: {
               display: false
             },
@@ -162,15 +191,13 @@ class HistoricalChart extends Component{
           <div className='profile-chart'>
             <div className='state-graph'>
               <div className='historical-buttons'>
-              <button value={30} onClick={this.clickBtn}>+30 Days</button><button value={-30} onClick={this.clickBtn}>-30 Days</button>
+              {(this.props.currentPage === 'show' || this.props.currentPage === 'index')  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
               </div>
               <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
             </div>
           </div>
         )
     }
-
-
 }
 
 export default HistoricalChart

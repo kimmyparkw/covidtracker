@@ -11,15 +11,17 @@ function StatesList(props) {
     return (
         <>
             <div className='info-container'>
-                {console.log(props)}
-                <HistoricalChart currentPage={props.currentPage} dailyChartData={props.usDaily} weeklyChartData={props.usWeek} monthlyChartData={props.usMonth} />
-                <StateSingle currentPage={props.currentPage} usData={props.usData} />
+                <StateSingle currentPage={props.currentPage} dailyChartData={props.usDaily} weeklyChartData={props.usWeek} monthlyChartData={props.usMonth} usData={props.usData} />
             </div>
-            <div className='state-list'>
-                {props.allStateData.map((state) => {
-                    return <Link to={`/stats/${state.state}`} key={state.hash}><h3>{props.fullName[state.state]}</h3></Link>
-                })}
+            <div className="state-list-container">
+                <h1>States and Territories</h1>
+                <div className='state-list'>
+                    {props.allStateData.map((state) => {
+                        return <Link to={`/stats/${state.state}`} key={state.hash}><h3>{props.fullName[state.state]}</h3></Link>
+                    })}
+                </div>
             </div>
+            
         </>
     )
 }

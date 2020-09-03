@@ -121,7 +121,7 @@ class StateController extends React.Component {
     decideWhichToRender() {
         switch(this.state.currentPage) {
             default: case 'index':
-                return <StatesList currentPage={this.state.currentPage} usData={this.state.usData} usDaily={this.state.usDaily} usWeek={this.state.usWeek} usMonth={this.state.usMonth} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
+                return <StatesList usData={this.state.usData} usWeek={this.state.usWeek} usMonth={this.state.usMonth} allStateData={this.state.allStateData} usDaily={this.state.usDaily} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
                 return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} singleStateHistorical={this.state.singleStateHistorical} singleStateMeta={this.state.singleStateMeta} singleStateWeek={this.state.singleStateWeek} singleStateMonth={this.state.singleStateMonth} save={this.saveToProfile}/>
             case 'profile':

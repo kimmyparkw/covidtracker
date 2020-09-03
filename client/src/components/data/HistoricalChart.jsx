@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Line, Bar} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
+import {Link} from 'react-router-dom'
 import moment from 'moment';
 
 class HistoricalChart extends Component{
@@ -91,7 +92,7 @@ class HistoricalChart extends Component{
           fill: false,
           backgroundColor: "#1D3557",
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-          borderColor: "#1D3557",
+          borderColor: "#66FCF1",
           yAxisID: 'y-axis-2',
           borderWidth: 1,
           pointRadius: 1.5, 
@@ -102,8 +103,8 @@ class HistoricalChart extends Component{
           type: 'bar',
           data: this.state.yAxisRight,
           fill: true,
-          backgroundColor: "#A8DADC",
-          borderColor: "#457B9D",
+          backgroundColor: "#324052",
+          borderColor: "#C5C6C7",
           yAxisID: 'y-axis-1',
         }
       ]
@@ -113,7 +114,7 @@ class HistoricalChart extends Component{
       display: true,
       position: "bottom",
       labels: {
-        fontColor: "#323130",
+        fontColor: "#C5C6C7",
         fontSize: 14
       }
     };
@@ -187,15 +188,14 @@ class HistoricalChart extends Component{
     };
     
         return(
-          <>
-            <div>
-              <div>
-                {(this.props.currentPage === 'show' || this.props.currentPage === 'index')  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
-                <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
+          <div className='profile-chart'>
+            <div className='state-graph'>
+              <div className='historical-buttons'>
+              {(this.props.currentPage === 'show' || this.props.currentPage === 'index')  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
               </div>
+              <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
             </div>
-              
-          </>
+          </div>
         )
     }
 }

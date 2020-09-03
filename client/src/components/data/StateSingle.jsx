@@ -8,7 +8,6 @@ class StateSingle extends React.Component {
             <>
                 <h1>United States COVID-19 Statistics</h1>
                 <div className='info'>
-                    {console.log(this.props)}
                     <HistoricalChart currentPage={this.props.currentPage} dailyChartData={this.props.dailyChartData} weeklyChartData={this.props.weeklyChartData} monthlyChartData={this.props.monthlyChartData} />
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
@@ -40,6 +39,7 @@ class StateSingle extends React.Component {
                     </div>
                     <div className='button-container'>
                         <Link to='/stats'>Back to all stats</Link>
+                        {console.log(this.props.userState.user)}
                         {this.props.userState.user && <button onClick={() => this.props.save()}>Save to profile</button>}
                         {this.props.userState.user && <Link to='/user/profile'>Back to profile</Link>}
                     </div>

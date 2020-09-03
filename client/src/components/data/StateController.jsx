@@ -13,6 +13,8 @@ class StateController extends React.Component {
             allStateData: null,
             singleStateData: null,
             singleStateHistorical: null,
+            singleStateMonth: null,
+            singleStateWeek: null,
             singleStateMeta: null,
             usData: null,
             usDaily: null,
@@ -49,9 +51,12 @@ class StateController extends React.Component {
         fetch(`/stats/${this.state.currentId}`)
         .then(res => res.json())
             .then(res => {
+                console.log(res)
             this.setState({
                 singleStateData: res.singleState,
                 singleStateHistorical: res.singleStateHistorical,
+                singleStateMonth: res.singleStateMonth,
+                singleStateWeek: res.singleStateWeek,
                 singleStateMeta: res.singleStateMeta,
                 isLoaded: true,
             })
@@ -119,9 +124,9 @@ class StateController extends React.Component {
             default: case 'index':
                 return <StatesList usData={this.state.usData} usDaily={this.state.usDaily} usWeek={this.state.usWeek} usMonth={this.state.usMonth} allStateData={this.state.allStateData} currentPage={this.state.currentPage} fullName={this.state.fullStateNames}/>
             case 'show':
-                return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} singleStateHistorical={this.state.singleStateHistorical} singleStateMeta={this.state.singleStateMeta} save={this.saveToProfile}/>
+                return <StateSingle currentPage={this.state.currentPage} fullName={this.state.fullStateNames} userState={this.state.userState} singleStateData={this.state.singleStateData} singleStateHistorical={this.state.singleStateHistorical} singleStateMeta={this.state.singleStateMeta} singleStateWeek={this.state.singleStateWeek} singleStateMonth={this.state.singleStateMonth} save={this.saveToProfile}/>
             case 'profile':
-                return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState } usData={this.state.usData} usDaily={this.state.usDaily} usWeek={this.state.usWeek} usMonth={this.state.usMonth}/>
+                return <Profile userSelected={this.state.userSelected} delete={this.handleDelete} fullName={this.state.fullStateNames} user={this.state.userData} currentPage={this.state.currentPage} userState={this.state.userState } />
                 
         }
     }

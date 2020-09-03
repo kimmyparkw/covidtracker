@@ -10,36 +10,44 @@ class HistoricalChart extends Component{
       xAxis: null,
       yAxisRight: null,
       yAxisLeft: null,
-      dataRange: 30,
+      dataView: 'Day',
     }
   }
-    
+  
   componentDidMount() {
-    this.chartDataFormatter()
+    (this.chartDataFormatter())
   }
   
   clickBtn = (e) => {
-    this.setState({ dataRange: this.state.dataRange + parseInt(e.target.value) }, this.chartDataFormatter)
+    if (e.target.value === 'Month') {
+      this.setState({ chartData: this.props.monthlyChartData })
+    } else if (e.target.value === 'Week') {
+      this.setState({ chartData: this.props.weeklyChartData })
+    } else if (e.target.value === 'Day') {
+      this.setState({ chartData: this.props.dailyChartData })
+    }
+    this.setState({ dataView: e.target.value }, this.chartDataFormatter)
+    
   }
  
   chartDataFormatter = () => {
-    const days = this.props.chartData.map((day) => {
+    if (this.state.dataView === 'Day') {
+    const xAxis = this.props.dailyChartData.map((day) => {
       return (moment(day.date.toString()).format('MM-DD'))
-    })
-    const xAxis = days.filter((date, index) => {
-      return index < this.state.dataRange
+    }).filter((date, index) => {
+      return index < 30
     }).reverse()
     
-    const yAxisRight = this.props.chartData.map((day) => {
+    const yAxisRight = this.props.dailyChartData.map((day) => {
       return parseInt(day.totalTestResultsIncrease)
     }).filter((date, index) => {
-      return index < this.state.dataRange
+      return index < 30
     }).reverse()
     
-    const yAxisLeft = this.props.chartData.map((day) => {
+    const yAxisLeft = this.props.dailyChartData.map((day) => {
       return parseInt((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
     }).filter((date, index) => {
-      return index < this.state.dataRange
+      return index < 30
     }).reverse()
 
     this.setState({
@@ -48,9 +56,28 @@ class HistoricalChart extends Component{
       xAxis: xAxis,
       
     })
-
-    
+    } else if (this.state.dataView === 'Month' || 'Week') {
+     
+      const xAxis = Object.keys(this.state.chartData).map((el) => {
+        return el
+      }).reverse()
+      
+      const yAxisRight = Object.values(this.state.chartData).map((el) => {
+        return el[1]
+      }).reverse()
+      
+      const yAxisLeft = Object.values(this.state.chartData).map((el) => {
+        return ((el[0] / el[1]) * 100)
+      }).reverse()
   
+      this.setState({
+        yAxisRight: yAxisRight,
+        yAxisLeft: yAxisLeft,
+        xAxis: xAxis,
+        
+      })
+      } 
+
   }
   
   render() {
@@ -96,7 +123,8 @@ class HistoricalChart extends Component{
       duration: 500,
       title: {
         display: true,
-        text: `${this.props.stateName} Confirmed and Probable Positives by Day*`
+        fontSize: 18,
+        text: `${this.props.stateName} Confirmed and Probable Positives by ${this.state.dataView}*`
       },
       scales: {
         yAxes: [
@@ -160,11 +188,10 @@ class HistoricalChart extends Component{
     
         return(
           <>
-            
             <div>
               <div>
-                <button value={30} onClick={this.clickBtn}>+30 Days</button><button value={-30} onClick={this.clickBtn}>-30 Days</button>
-                <Bar width={450} className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
+                {this.props.currentPage === 'show'  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
+                <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
               </div>
             </div>
               

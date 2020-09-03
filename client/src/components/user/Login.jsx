@@ -14,7 +14,7 @@ class Login extends React.Component {
                 <div>
                     <h4>Login</h4>
                     <UserForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} userState={this.props.userState} currentPage={this.props.currentPage}/>
-                    <span>New User? <a href='/user/new'>Click Here To Register</a></span>
+                    <span className="new-user">New User? <a href='/user/new'>Click Here To Register</a></span>
                     <div><span>{(this.props.userState.message) && this.props.userState.message}</span></div>
                 </div>
             )

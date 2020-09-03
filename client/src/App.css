@@ -137,18 +137,14 @@ footer {
 
 }
 */
-
-/* .form-container span { */
-  /* width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+/* 
+ .form-container { 
   display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  text-align: center;
+  
   
 
-} */
+}  */
 
 input[type=text], select {
   width: 75%;
@@ -191,9 +187,13 @@ input[type=submit] {
   cursor: pointer;
 }
 
+.new-user {
+  color: #66FCF1;
+}
 
-
-
+.new-user a {
+  color: #7854a7;
+}
 
 h1 {
   font-family: 'Montserrat', sans-serif;

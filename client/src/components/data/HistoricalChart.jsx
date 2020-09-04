@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar, Tooltip} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import {Link} from 'react-router-dom'
 import moment from 'moment';
 
@@ -120,10 +120,7 @@ class HistoricalChart extends Component{
     };
     
     this.options = {
-      tooltips: {
-        enabled: true,
-        
-      },
+      tooltips: {enabled: true},
       duration: 500,
       title: {
         display: true,

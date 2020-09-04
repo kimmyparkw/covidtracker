@@ -5,6 +5,7 @@ COVID tracker empowers users with easy-access, accurate, and up-to-date informat
 - Stack: React, Express, PSQL
 - COVID tracker leverages React for the front end, Express on the backend and PSQL for the database.
 - The app also leverages `react-chartjs-2` and `chart.js` for data visualization and `moment` for date manipulation.
+- The data behind our visualizations and statistics is provided by [The COVID Tracking Project](https://covidtracking.com/) and has been used by news outlets such as The New York Times, FiveThirtyEight, and The Wall Street Journal.
 
 ## Approach
 - This app was split into areas of ownership with two team members on the backend and two on the frontend.
@@ -19,9 +20,10 @@ COVID tracker empowers users with easy-access, accurate, and up-to-date informat
 ## Use
 - A simple `yarn install` or `npm install` for both the express app and client will provide all package dependencies.
 
-## React State Diagram
-
-## Database Diagram
+## Diagrams & Wireframes
+- Database
+- [Reaect State Flow](./client/public/readme-assets/react_state_flow.png)
+- Wireframes
 
 ## Express API Routes
 |User Story|Route|
@@ -40,3 +42,5 @@ COVID tracker empowers users with easy-access, accurate, and up-to-date informat
 |User can log out| `GET /auth/logout`|
 
 ## Future Opportunities
+- Further analytics, paritcularly racial and ethnic data, should be implemented.
+- Historical data could be stored in our database to improve performance. Due to time contstraint, this was not implemented in the intial release.

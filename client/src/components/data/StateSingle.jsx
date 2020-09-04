@@ -32,7 +32,7 @@ class StateSingle extends React.Component {
                         <div className='state-meta'>
                             <div className="state-contact">
                                 <h4>State Website:</h4> 
-                                <p className="state-notes"><a href={this.props.singleStateMeta.covid19Site} rel="noopener noreferrer" target='_blank'>{this.props.fullName[this.props.singleStateData.state]} Covid Data Source</a></p>
+                                <p className="state-notes-website"><a href={this.props.singleStateMeta.covid19Site} rel="noopener noreferrer" target='_blank'>{this.props.fullName[this.props.singleStateData.state]} Covid Data Source</a></p>
                             </div>
                             <div className="state-contact">
                                 <h4>State Covid Twitter:</h4>
@@ -44,7 +44,7 @@ class StateSingle extends React.Component {
                         </div>
                         <div className='button-container'>
                             <Link to='/stats'>Back to all stats</Link>
-                            {this.props.userState.auth && <button onClick={() => this.props.save()}>Save to profile</button>}
+                            {this.props.userState.auth && <button className='save-button' onClick={() => this.props.save()}>Save to profile</button>}
                             {this.props.userState.auth && <Link to='/user/profile'>Back to profile</Link>}
                         </div>
                         

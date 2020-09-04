@@ -40,17 +40,33 @@ const usersController = {
 
   //Allow users to edit their profiles
   update(req, res, next) {
-    User.getByUserId(req.params.id)
-      .then((user) => {
-        return user.update(req.body, user.id)
-      }).then((user) => {
-        res.status(201).json({
-          message: 'User Profile Updated.',
-          data: {
-            user,
+    if(req.body.email  || req.body.password) {
+      User.getByUserId(req.params.id)
+        .then((user) => {
+          const changes = {}
+          if (req.body.email) { changes.email = req.body.email }
+          if (req.body.password) {
+            const salt = bcrypt.genSaltSync()
+            const hash = bcrypt.hashSync(req.body.password, salt)
+            changes.password_digest = hash
           }
-        })
-      }).catch(next)
+          return user.update(changes, user.id)
+        }).then((user) => {
+          res.status(201).json({
+            message: 'User Profile Updated.',
+            auth: true,
+            data: {
+              user,
+            }
+          })
+        }).catch(next)
+    } else return console.log ("HERE",req),res.status(201).json({  
+        message: 'No Changes.  User Profile Not Updated',
+        auth: true,
+        data: {
+          user: req.user
+        }
+      }) 
   },
 }
 

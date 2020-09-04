@@ -20,6 +20,7 @@ passport.use(
             .then(user => {
                 console.log(user)
                 if (!user) {
+                    console.log('No Username Found')
                     return done(null, false)
                 }
                 if (!authHelpers.comparePass(password, user.password_digest)) {

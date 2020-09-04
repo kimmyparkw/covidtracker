@@ -13,7 +13,7 @@ class User {
         SELECT * FROM users WHERE username = $1`, username)
             .then(user => {
                 if (user) return new this(user)
-                throw new Error(`No user with username: ${username} found.`)
+                // throw new Error(`No user with username: ${username} found.`)
         })
     }
 
@@ -38,7 +38,6 @@ class User {
     //UPDATE USER PROFILE
     update(changes, id) {
         Object.assign(this, changes)
-        console.log(changes)
         return db.oneOrNone(
             `UPDATE users SET
             email = $/email/, password_digest = $/password_digest/ WHERE id = ${id} RETURNING *`, this)

@@ -21,11 +21,11 @@ export default function Header(props) {
                         {props.auth && <li><Link to='/user/profile'>Profile</Link></li>}
                         {props.auth ? (<li><Link className='log' to='/auth/logout' onClick={props.logout}>Logout</Link></li>) : (<li><Link className='log' to='/auth/login'>Login</Link></li>)}
                 </ul>
-                <div className="burger">
+                {/* <div className="burger">
                     <div className="line1"></div>
                     <div className="line2"></div>
                     <div className="line3"></div>
-                </div>
+                </div> */}
         </div>
     )
 }

@@ -282,7 +282,7 @@ footer {
   padding: 10px;
 }
 .state-notes-header {
-  margin-bottom: .5em;
+  margin-bottom: .3em;
 }
 
 .total-stats {
@@ -295,6 +295,10 @@ footer {
   color: #1F2833;
   border-radius: 5px;
   padding: 5px;
+  box-shadow: 9px 9px 9px 0 rgb(58, 57, 48); 
+}
+
+.save-button {
   box-shadow: 9px 9px 9px 0 rgb(58, 57, 48); 
 }
 
@@ -496,7 +500,7 @@ h1 {
 /*MEDIA QUERY*/
 
 @media (max-width: 900px) {
-  .burger {
+  /* .burger {
     display: block;
   }
 
@@ -507,6 +511,6 @@ h1 {
   
   .navlinks.active {
 
-  }
+  } */
 
 }

@@ -1,7 +1,29 @@
-# covidtracker
-unit 3 project: COVID-19 tracker react app.
+# COVID tracker
+COVID tracker empowers users with easy-access, accurate, and up-to-date information about Covid-19 in the United States.
 
-## CRUD Routes
+## Technologies Used
+- Stack: React, Express, PSQL
+- COVID tracker leverages React for the front end, Express on the backend and PSQL for the database.
+- The app also leverages `react-chartjs-2` and `chart.js` for data visualization and `moment` for date manipulation.
+
+## Approach
+- This app was split into areas of ownership with two team members on the backend and two on the frontend.
+- While each team member worked on the frontend, owners acted as points for any bugs and deeper understanding of expected behavior.
+- User stories, wireframes, and ERDs were created as a team to align overall vision and direction.
+- The MOSCOW method was used to prioritize user stories.
+- Riskiest pieces of the project, particularly charts, were vetted first to ensure project success.
+- Express routes and expected json returns were designed up front to allow front end development to take place in-parallel.
+- Similarly, the React frontend diagram was designed up front to allow members to pick up frontend tasks with clear understanding of the client structure and state. 
+- Zoom standups were held every morning to track overall progress and identify potential blockers towards the MVP.
+
+## Use
+- A simple `yarn install` or `npm install` for both the express app and client will provide all package dependencies.
+
+## React State Diagram
+
+## Database Diagram
+
+## Express API Routes
 |User Story|Route|
 |-|-|
 |User can browse US Country and State COVID totals| `GET /stats`|
@@ -16,3 +38,5 @@ unit 3 project: COVID-19 tracker react app.
 |Access log in page| `GET /auth/login`|
 |User can log in| `POST /auth/login`|
 |User can log out| `GET /auth/logout`|
+
+## Future Opportunities

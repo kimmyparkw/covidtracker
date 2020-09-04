@@ -6,7 +6,7 @@ class Login extends React.Component {
         super()
         this.state = ({
             method: 'POST',
-            route: '/auth/login',
+            route: '/api/auth/login',
         })
     }
     render() {

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const passport = require('passport')
+const path = require('path')
 
 //intialize the app and setup dotenv
 const app = express()
@@ -42,23 +43,21 @@ app.get('/', (req, res) => {
 
 
 const authRoutes = require('./routes/auth-routes')
-app.use('/auth', authRoutes)
+app.use('/api/auth', authRoutes)
 
 const userRoutes = require('./routes/user-routes')
-app.use('/user', userRoutes)
+app.use('/api/user', userRoutes)
 
 const userStatesRouter = require('./routes/user-states');
-app.use('/user/stats', userStatesRouter);
+app.use('/api/user/stats', userStatesRouter);
 
 const statsRouter = require('./routes/stats-routes')
-app.use('/stats', statsRouter)
+app.use('/api/stats', statsRouter)
 
-//Error handlers
-app.use('*', (req, res) => {
-    res.status(400).json({
-        message: 'Not Found!!!'
-    })
-})
+//Send to React App
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/index.html'))
+});
 
 app.use((err, req, res, next) => {
     console.log(err)

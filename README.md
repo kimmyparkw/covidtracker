@@ -1,6 +1,9 @@
 # COVID tracker
 COVID tracker empowers users with easy-access, accurate, and up-to-date information about Covid-19 in the United States.
 
+## Deployed App
+- https://uscovidtracker.herokuapp.com/user/profile
+
 ## Technologies Used
 - Stack: React, Express, PSQL
 - COVID tracker leverages React for the front end, Express on the backend and PSQL for the database.

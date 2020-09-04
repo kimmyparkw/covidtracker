@@ -124,7 +124,7 @@ class HistoricalChart extends Component{
       title: {
         display: true,
         fontSize: 18,
-        text: `${this.props.stateName || 'US'} Confirmed and Probable Positives by ${this.state.dataView}*`
+        text: `${this.props.stateName || 'US'} % Confirmed and Probable Positives by ${this.state.dataView}*`
       },
       scales: {
         yAxes: [

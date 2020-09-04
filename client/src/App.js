@@ -22,7 +22,7 @@ class App extends React.Component {
   
   componentDidMount = () => {
     console.log("Auth Check on Component Did Mount...(GET 400 Will follow if no current user logged in)", this.auth)
-    fetch('/auth/login', { credentials: 'include' })
+    fetch('/api/auth/login', { credentials: 'include' })
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -64,7 +64,7 @@ class App extends React.Component {
   }
 
   logout = () => {
-    fetch('/auth/logout', {
+    fetch('/api/auth/logout', {
       credentials: 'include',
     }).then(res => res.json())
     .then(res => {

@@ -6,7 +6,7 @@ class Register extends React.Component {
         super()
         this.state = ({
             method: 'POST',
-            route: '/user/new',
+            route: '/api/user/new',
         })
        
     }

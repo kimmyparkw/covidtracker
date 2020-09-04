@@ -52,6 +52,11 @@ class App extends React.Component {
         auth: res.auth,
         user: res.data.user,
       })
+      if (res.message) {
+        setTimeout(function() {
+          this.setState({message: null})
+        }.bind(this), 5000)
+      }
       
     }).catch(err => {
       console.log(err)

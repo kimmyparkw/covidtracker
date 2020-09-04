@@ -1,5 +1,5 @@
 import React from 'react'
-
+import FlashMessage from 'react-flash-message'
 class EditForm extends React.Component {
     constructor(props) {
         super(props)

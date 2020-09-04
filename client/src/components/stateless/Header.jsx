@@ -7,8 +7,8 @@ export default function Header(props) {
     return (
         <div className="nav-container">
             <img src={Logo} alt='logo'/>
-            <nav>
-                <ul>
+
+                <ul className='navlinks'>
                     <li>
                         <Link to='/'>Home</Link>
                     </li>
@@ -26,7 +26,6 @@ export default function Header(props) {
                     <div className="line2"></div>
                     <div className="line3"></div>
                 </div>
-            </nav>
         </div>
     )
 }

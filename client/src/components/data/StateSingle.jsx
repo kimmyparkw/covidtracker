@@ -32,7 +32,7 @@ class StateSingle extends React.Component {
                         <div className='state-meta'>
                             <div className="state-contact">
                                 <h4>State Website:</h4> 
-                                <p className="state-notes"><a href={this.props.singleStateMeta.covid19Site} rel="noopener noreferrer" target='_blank'>{this.props.fullName[this.props.singleStateData.state]} Covid Data Source</a></p>
+                                <p className="state-notes-website"><a href={this.props.singleStateMeta.covid19Site} rel="noopener noreferrer" target='_blank'>{this.props.fullName[this.props.singleStateData.state]} Covid Data Source</a></p>
                             </div>
                             <div className="state-contact">
                                 <h4>State Covid Twitter:</h4>

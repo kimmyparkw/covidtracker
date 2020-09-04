@@ -235,12 +235,15 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   flex-grow: .2;
+  margin-right: 10px;
 }
 .stats-container-right{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-grow: .8;
+  margin-left: 10px;
+  padding-top: 40px;
 }
 .historical-buttons {
   display: flex;
@@ -257,11 +260,16 @@ footer {
   display: flex;
   align-items: center;
 }
+
 .state-notes {
   color: #c4c6c7;
-  max-width: 30em;
-
+  max-height: 10em;
+  max-width: 40em;
+  overflow-y: scroll;
+  border: 1px solid #45a29e;
+  padding: 8px;
 }
+
 .state-meta {
   display: flex;
   flex-direction: column;

@@ -58,7 +58,7 @@ body {
 
 /*HEADER*/
 
-.burger-toggle {
+.burger {
   position: absolute;
   top: 2em;
   right: 50px;
@@ -513,40 +513,21 @@ h1 {
       text-align: center;
   } 
 
-  .burger-toggle {
-    display: flex;
-  }
-
-  .navlinks {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-  }
-
   .navlinks li {
     padding: 5px;
-  }
-
-  .navlinks li:hover {
-    background-color: #c4c6c7;
-    border-radius: 5px;
-    padding: 5px; 
   }
 
   .navlinks.active {
     display: flex;
   }
 
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
+   ul li {
+    font-size: .8em;
   }
 
-   /* ul li {
-    font-size: .8em;
-    position: absolute;
-    right: 0;
-  } */
+  .nav-container img {
+    height: 4em;
+  }
 
   input[type=text], input[type=password], input[type=submit]{
       padding: 5px 5px;
@@ -555,6 +536,19 @@ h1 {
 
   footer {
     font-size: .7em;
+  }
+
+  .stats-outer-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .stats-container-left {
+    align-items: center;
+  }
+
+  .historical-buttons button {
+    width: 6em;
   }
 
 }

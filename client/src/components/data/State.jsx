@@ -1,7 +1,4 @@
-//detailed information about a particular state
-
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 function State(props) {
     return (

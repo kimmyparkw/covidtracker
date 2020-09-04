@@ -23,10 +23,11 @@ COVID tracker empowers users with easy-access, accurate, and up-to-date informat
 ## Use
 - A simple `yarn install` or `npm install` for both the express app and client will provide all package dependencies.
 
-## Diagrams & Wireframes
+## Links and Resources
 - [Database](./client/public/readme-assets/database_design.png)
 - [React State Flow](./client/public/readme-assets/react_state_flow.png)
 - [Wireframes](./client/public/readme-assets/wireframes)
+- [Trello board](https://trello.com/b/GA4WsK3M/fat-louies)
 
 ## Express API Routes
 |User Story|Route|

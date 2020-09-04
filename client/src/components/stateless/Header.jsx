@@ -1,4 +1,3 @@
-//includes the logo and the nav
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../covidlogo.png'

@@ -77,12 +77,12 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #0B0C10;
-  height: 10vh;
+  height: 15vh;
   width: 100%;
 }
 
 .nav-container img {
-  height: 3.5em;
+  height: 5em;
   margin-left: 50px;
 }
 
@@ -135,6 +135,11 @@ footer {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   height: 50px; 
+}
+
+.linkedin {
+  text-decoration: none;
+  color: #45A29E;
 }
 
 /*HOME AND ABOUT*/
@@ -299,7 +304,7 @@ footer {
 }
 
 .save-button {
-  box-shadow: 9px 9px 9px 0 rgb(58, 57, 48); 
+  box-shadow: 9px 9px 9px 0 rgb(58, 57, 48);
 }
 
 .button-container a:active {

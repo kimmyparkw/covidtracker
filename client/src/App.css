@@ -70,9 +70,9 @@ body {
 }
 
 .bar {
-  height: 5px;
+  height: 3px;
   width: 100%;
-  background-color: black;
+  background-color: #66FCF1;
   border-radius: 10px;
 }
 
@@ -518,7 +518,7 @@ h1 {
   }
 
   .navlinks {
-    /* display: none; */
+    display: none;
     flex-direction: column;
     width: 100%;
   }
@@ -531,6 +531,10 @@ h1 {
     background-color: #c4c6c7;
     border-radius: 5px;
     padding: 5px; 
+  }
+
+  .navlinks.active {
+    display: flex;
   }
 
   .nav-container {

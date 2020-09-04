@@ -46,7 +46,7 @@ class HistoricalChart extends Component{
     }).reverse()
     
     const yAxisLeft = this.props.dailyChartData.map((day) => {
-      return parseFloat((day.positiveIncrease / day.totalTestResultsIncrease) * 100)
+      return parseFloat((day.positiveIncrease / day.totalTestResultsIncrease) * 100).toFixed(2)
     }).filter((date, index) => {
       return index < 30
     }).reverse()
@@ -68,7 +68,7 @@ class HistoricalChart extends Component{
       }).reverse()
       
       const yAxisLeft = Object.values(this.state.chartData).map((el) => {
-        return ((el[0] / el[1]) * 100)
+        return ((el[0] / el[1]) * 100).toFixed(2)
       }).reverse()
   
       this.setState({
@@ -120,7 +120,7 @@ class HistoricalChart extends Component{
     };
     
     this.options = {
-      tooltips: { enabled: true },
+      tooltips: {enabled: true},
       duration: 500,
       title: {
         display: true,
@@ -193,7 +193,7 @@ class HistoricalChart extends Component{
               <div className='historical-buttons'>
               {(this.props.currentPage === 'show' || this.props.currentPage === 'index')  && <div><button value={'Day'} onClick={this.clickBtn}>Daily</button><button value={'Week'} onClick={this.clickBtn}>Weekly</button><button value={'Month'} onClick={this.clickBtn}>Monthly</button></div>}
               </div>
-              <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state}/>
+              <Bar className='stateChart' data={this.data} legend={this.legend} options={this.options} state={this.state} />
             </div>
           </div>
         )

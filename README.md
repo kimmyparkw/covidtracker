@@ -25,7 +25,7 @@ COVID tracker empowers users with easy-access, accurate, and up-to-date informat
 
 ## Diagrams & Wireframes
 - [Database](./client/public/database_design.png)
-- [Reaect State Flow](./client/public/readme-assets/react_state_flow.png)
+- [React State Flow](./client/public/readme-assets/react_state_flow.png)
 - [Wireframes](./client/public/wireframes)
 
 ## Express API Routes

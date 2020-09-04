@@ -22,7 +22,7 @@ class EditForm extends React.Component {
     render() {
         return(
             <div className='form-container'>
-                <form onSubmit={(e) => this.props.handleFormSubmit(this.props.state.method, e, this.state, `/user/profile/${this.props.userState.user.id}`)}>
+                <form onSubmit={(e) => this.props.handleFormSubmit(this.props.state.method, e, this.state, `/api/user/profile/${this.props.userState.user.id}`)}>
                     <input type="hidden" name="username" value={this.props.userState.user.username} placeholder={this.props.userState.user.username} onChange={this.handleFormChanges} readonly/>
                     <input type="email" name="email" value={this.state.email} placeholder={this.props.userState.user.email} onChange={this.handleFormChanges} />
                     <input type="password" name="password" value={this.state.password} placeholder="Update Password" onChange={this.handleFormChanges} />

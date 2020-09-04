@@ -36,7 +36,7 @@ class App extends React.Component {
   
   handleFormSubmit = (method, e, data, route) => {
     e.preventDefault()
-    console.log("submit data", data)
+    // console.log("submit data", data)
     fetch(route, { 
       method: method,
       headers: {
@@ -46,7 +46,7 @@ class App extends React.Component {
       body: JSON.stringify(data),
     }).then(res => res.json())
     .then(res => {
-      console.log("submit res", res)
+      // console.log("submit res", res)
       this.setState({
         message: res.message,
         auth: res.auth,

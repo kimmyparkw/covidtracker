@@ -15,12 +15,14 @@
 .form-submit-message {
   color: white;
   font-weight: 700;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 canvas {
   background-color: #121c2b;
-  min-width: 400px;
-  min-height: 200px;
+  min-width: 500px;
+  min-height: 300px;
 }
 
 body {
@@ -273,7 +275,7 @@ footer {
 .state-notes {
   color: #c4c6c7;
   max-height: 10em;
-  max-width: 40em;
+  max-width: 38em;
   overflow-y: scroll;
   border: 1px solid #45a29e;
   padding: 8px;
@@ -331,7 +333,7 @@ h1 {
 
 .state-list {
   margin-top: 15px;
-  height: 1340px;
+  height: 1100px;
 }
 /* 
 h3 {
@@ -364,6 +366,11 @@ button {
 .welcome {
   margin-bottom: 10px;
   font-size: 4em;
+}
+
+.profile-no-states {
+  width: 60%;
+  text-align: center;
 }
 
 .edit-user-link {

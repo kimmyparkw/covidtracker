@@ -101,7 +101,6 @@ class StateController extends React.Component {
     }
 
     saveToProfile = () => {
-        console.log(`I'm saving this`)
         fetch(`/api/user/stats/${this.state.currentId}`, {
             method: 'POST',
         })
@@ -111,8 +110,6 @@ class StateController extends React.Component {
                 fireRedirect: true,
                 redirectPath: '/user/profile'
             })
-            console.log(`past set state section`)
-            console.log(this.state.fireRedirect)
             this.getUserSelected();
         }).catch(err => console.log(err))
     }

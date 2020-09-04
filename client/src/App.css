@@ -17,12 +17,17 @@ canvas {
   width: 400px;
 }
 
+body {
+  width: 100%;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding-right: 10px;
   background-color: #0B0C10;
+  max-width: 100%;
 }
 
 .main {
@@ -32,24 +37,38 @@ canvas {
   background-color: #0B0C10;
   flex-grow:1;
   padding: 0 50px;
+  max-width: 100%;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  width: 100%;
+  max-width: 100%;
   padding-bottom: 50px;
 }
 
 /*HEADER*/
 
+.burger {
+  display: none;
+}
+
+.burger div{
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  background-color: #66FCF1;
+  border-radius: 10px;
+}
+
 .nav-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #0B0C10;
   padding: 0 20px;
+  max-width: 100%;
 }
 
 .nav-container img {
@@ -57,12 +76,27 @@ canvas {
   margin: 15px 0 15px 30px;
 }
 
-nav a {
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style: none;
   margin: 0 20px;
+}
+
+nav a {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.3em;
   font-weight: bold;
   color: #66FCF1;
+  text-decoration: none;
 }
 
 nav a:focus {
@@ -72,7 +106,7 @@ nav a:focus {
   opacity: .5;
 }
 
-nav a:last-child  {
+.log  {
   background: white;
   color: #1f2833;
   border-radius: 5px;
@@ -101,12 +135,13 @@ footer {
 .hero {
   display: flex;
   align-items: center;
-  width: 100%;
-  margin-top: 60px;
+  max-width: 100%;
+  margin-top: 40px;
+  padding: 20px;
 }
 
 .hero-title-text {
-  margin: 40px;
+  margin: 30px;
   color: #66FCF1;
 }
 
@@ -136,7 +171,8 @@ footer {
 .state-list {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  align-items: center;
+  max-width: 50%;
 }
 
 .state-list a:hover {
@@ -144,13 +180,15 @@ footer {
 }
 
 .state-list-container {
-  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-image {
-  height: 23em;
   animation: covidrotation 10s infinite linear;
   margin-right: 20px;
+  max-width: 40%;
 }
 
 @keyframes covidrotation {
@@ -166,6 +204,7 @@ footer {
 /*STATE PAGE*/
 
 .button-container a {
+  text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   background: #c4c6c7;
   color: #1F2833;
@@ -204,7 +243,7 @@ h1 {
 */
 
 .state-list a {
-
+  text-decoration: none;
   color: #c4c6c7;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -287,6 +326,7 @@ button {
 }
 
 .profile-chart a {
+  text-decoration: none;
   color: #c4c6c7;
 }
 
@@ -300,3 +340,10 @@ button {
   align-items: center;
 }
 
+/*MEDIA QUERY*/
+
+@media screen and (max-width: 600px) {
+  body {
+    display: none;
+  }
+}

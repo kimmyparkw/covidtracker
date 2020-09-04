@@ -5,7 +5,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import StateSingle from './StateSingle.jsx'
-import HistoricalChart from './HistoricalChart.jsx'
 
 function StatesList(props) {
     return (

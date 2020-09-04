@@ -21,25 +21,25 @@ COVID tracker empowers users with easy-access, accurate, and up-to-date informat
 - A simple `yarn install` or `npm install` for both the express app and client will provide all package dependencies.
 
 ## Diagrams & Wireframes
-- Database
+- [Database](./client/public/database_design.png)
 - [Reaect State Flow](./client/public/readme-assets/react_state_flow.png)
-- Wireframes
+- [Wireframes](./client/public/wireframes)
 
 ## Express API Routes
 |User Story|Route|
 |-|-|
-|User can browse US Country and State COVID totals| `GET /stats`|
-|User can select a US state and see more info| `GET /stats/:id`|
-|User can save a US state to profile| `POST /user/stats/:id`|
-|User can delete a US state from profile| `DELETE /user/stats/:user_id/:state_id/`|
-|User can update email or password| `PUT /user/profile/:id`|
-|User can click on a US state in profile to see more| `GET /stats/:id`|
-|User can view their profile| `GET /user/profile`|
-|Access create account page| `GET /user/new`|
-|User can create account| `POST /user`|
-|Access log in page| `GET /auth/login`|
-|User can log in| `POST /auth/login`|
-|User can log out| `GET /auth/logout`|
+|User can browse US Country and State COVID totals| `GET /api/stats`|
+|User can select a US state and see more info| `GET /api/stats/:id`|
+|User can save a US state to profile| `POST /api/user/stats/:id`|
+|User can delete a US state from profile| `DELETE /api/user/stats/:user_id/:state_id/`|
+|User can update email or password| `PUT /api/user/profile/:id`|
+|User can click on a US state in profile to see more| `GET /api/stats/:id`|
+|User can view their profile| `GET /api/user/profile`|
+|Access create account page| `GET /api/user/new`|
+|User can create account| `POST /api/user`|
+|Access log in page| `GET /api/auth/login`|
+|User can log in| `POST /api/auth/login`|
+|User can log out| `GET /api/auth/logout`|
 
 ## Future Opportunities
 - Further analytics, paritcularly racial and ethnic data, should be implemented.

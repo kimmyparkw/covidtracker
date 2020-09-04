@@ -58,17 +58,21 @@ body {
 
 /*HEADER*/
 
-.burger {
+.burger-toggle {
+  position: absolute;
+  top: 2em;
+  right: 50px;
   display: none;
-  margin-right: 50px;
-  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
 }
 
-.burger div{
-  width: 25px;
-  height: 3px;
-  margin: 5px;
-  background-color: #66FCF1;
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: black;
   border-radius: 10px;
 }
 
@@ -76,7 +80,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #0B0C10;
+  background-color: white;
   height: 15vh;
   width: 100%;
 }
@@ -86,7 +90,7 @@ body {
   margin-left: 50px;
 }
 
-ul {
+.navlinks {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -507,20 +511,29 @@ h1 {
 @media (max-width:700px) {
   h1,h2,h3,h4{
       text-align: center;
+  } 
+
+  .burger-toggle {
+    display: flex;
   }
 
-  nav ul li {
-    font-size: 1em;
+  .navlinks {
+    display: none;
   }
 
-  input[type=text], input[type=password], input[type=email]{
+   /* ul li {
+    font-size: .8em;
+    position: absolute;
+    right: 0;
+  } */
+
+  input[type=text], input[type=password], input[type=submit]{
       padding: 5px 5px;
       margin: 5px 0;
   }
-  
-  td, th{
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 3px;
+
+  footer {
+    font-size: .7em;
   }
+
 }

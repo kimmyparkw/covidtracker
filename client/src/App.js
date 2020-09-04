@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       auth: false,
       user: null,
-      message: null
+      
     }
   }
   
@@ -28,6 +28,7 @@ class App extends React.Component {
         this.setState({
           auth: res.auth,
           user: res.data.user,
+          message: null,
         })
       }).catch(err => console.log(err))
   }

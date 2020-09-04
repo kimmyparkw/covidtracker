@@ -12,6 +12,10 @@
   TEAL: 45A29E
 */
 
+.form-submit-message {
+  color: white;
+}
+
 canvas {
   background-color: #121c2b;
   min-width: 400px;

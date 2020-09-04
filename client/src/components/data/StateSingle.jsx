@@ -44,8 +44,9 @@ class StateSingle extends React.Component {
                         </div>
                         <div className='button-container'>
                             <Link to='/stats'>Back to all stats</Link>
-                            {this.props.userState.user && <button onClick={() => this.props.save()}>Save to profile</button>}
-                            {this.props.userState.user && <Link to='/user/profile'>Back to profile</Link>}
+                            {console.log(this.props.userState.user)}
+                            {this.props.userState.auth && <button onClick={() => this.props.save()}>Save to profile</button>}
+                            {this.props.userState.auth && <Link to='/user/profile'>Back to profile</Link>}
                         </div>
                         
                     </div>

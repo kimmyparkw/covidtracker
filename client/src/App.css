@@ -165,6 +165,11 @@ footer {
   align-items: flex-start;
   flex-grow: .8;
 }
+.historical-buttons {
+  display: flex;
+  margin: 10px;
+
+}
 .chart {
   display: flex;
   flex-direction: column;

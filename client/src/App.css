@@ -29,12 +29,14 @@ body {
   padding: 0;
   background-color: #0B0C10;
   min-height: 100vh;
+  /* max-height: 100vh; */
 }
 
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* max-height: 100vh; */
 }
 
 .main {
@@ -44,12 +46,14 @@ body {
   flex-grow: 1;
   background-color: #0B0C10;
   padding: 0 50px;
-  padding-bottom: 50px;
 }
+
 
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
 }
 
 /*HEADER*/
@@ -117,34 +121,6 @@ li a:focus {
   box-shadow: 9px 9px 9px 0 rgb(58, 57, 48); 
 }
 
-
-/*MEDIA QUERY*/
-
-@media (max-width: 900px) {
-  .burger {
-    display: block;
-  }
-
-  /* .navlinks {
-    display: none;
-
-  } */
-  
-  .navlinks.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    right: 0px;
-    height: 90vh;
-    top: 10vh;
-    background-color: #0B0C10;
-    width: 40%;
-    transition: transform 0.5s ease-in;
-  }
-
-}
-
 /*FOOTER*/
 
 footer {
@@ -200,17 +176,12 @@ footer {
   align-items: center;
 }
 
-.state-list {
-  /*
-  display: grid;
-  grid-template-columns: 49% 49%;
-  column-gap: 2%; */
-  width: 100vw;
+.state-list {  
+  width: 80vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
- 
 }
 
 .state-list a:hover {
@@ -223,7 +194,7 @@ footer {
   border: 1px solid #ccc;
   text-align: center;
   border-radius: 5px;
-  min-width: 20em;
+  min-width: 19em;
 }
 
 .state-list a h3 {
@@ -234,7 +205,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 50em;
+  max-width: 80%;
 }
 
 .hero-image {
@@ -514,4 +485,20 @@ h1 {
   font-size: 20px;
 }
 
+/*MEDIA QUERY*/
 
+@media (max-width: 900px) {
+  .burger {
+    display: block;
+  }
+
+  .navlinks {
+    display: none;
+
+  }
+  
+  .navlinks.active {
+
+  }
+
+}

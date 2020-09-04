@@ -33,7 +33,7 @@ class StateController extends React.Component {
 
     getAllData = () => {
 
-        fetch('/stats') 
+        fetch('/api/stats') 
         .then(res => res.json())
         .then(res => {
             this.setState({
@@ -48,7 +48,7 @@ class StateController extends React.Component {
     }
 
     getSingleState = () => {
-        fetch(`/stats/${this.state.currentId}`)
+        fetch(`/api/stats/${this.state.currentId}`)
         .then(res => res.json())
             .then(res => {
             this.setState({
@@ -63,7 +63,7 @@ class StateController extends React.Component {
     }
 
     getUserSelected = () => {
-        fetch(`/user/profile`)
+        fetch(`/api/user/profile`)
         .then(res => res.json())
         .then(res => {
             this.setState({
@@ -87,7 +87,7 @@ class StateController extends React.Component {
     }
 
     handleDelete = (id) => {
-        fetch(`/user/stats/${this.state.userData.id}/${id}`, {
+        fetch(`/api/user/stats/${this.state.userData.id}/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
@@ -102,7 +102,7 @@ class StateController extends React.Component {
 
     saveToProfile = () => {
         console.log(`I'm saving this`)
-        fetch(`/user/stats/${this.state.currentId}`, {
+        fetch(`/api/user/stats/${this.state.currentId}`, {
             method: 'POST',
         })
         .then(res => res.json())

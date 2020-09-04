@@ -13,7 +13,6 @@ class EditProfile extends React.Component {
                 <div>
                     <h4>Update User Information</h4>
                     <EditForm handleFormSubmit={this.props.handleFormSubmit} state={this.state} userState={this.props.userState} currentPage={this.props.currentPage}/>
-                    <span>{(this.props.userState.message) && this.props.userState.message}</span>
                 </div>
             ) 
         }

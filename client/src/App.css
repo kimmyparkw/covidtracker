@@ -21,8 +21,8 @@
 
 canvas {
   background-color: #121c2b;
-  min-width: 500px;
-  min-height: 300px;
+  width: 500px;
+  height: 300px;
 }
 
 body {
@@ -205,7 +205,7 @@ footer {
   border: 1px solid #ccc;
   text-align: center;
   border-radius: 5px;
-  min-width: 19em;
+  width: 19em;
 }
 
 .state-list a h3 {
@@ -517,15 +517,28 @@ h1 {
 
 @media (max-width:700px) {
   h1,h2,h3,h4{
-      text-align: center;
+    text-align: center;
   } 
+  
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+
+  .nav-container {
+    width: 100%;
+    flex-direction: column;
+  }
 
   .navlinks li {
     padding: 5px;
-  }
-
-  .navlinks.active {
-    display: flex;
   }
 
    ul li {
@@ -534,6 +547,13 @@ h1 {
 
   .nav-container img {
     height: 4em;
+  }
+  
+  .hero {
+    flex-direction: column;
+  }
+  .hero-image {
+    max-width: 30%;
   }
 
   input[type=text], input[type=password], input[type=submit]{
@@ -552,10 +572,28 @@ h1 {
 
   .stats-container-left {
     align-items: center;
+    justify-content: center;
   }
 
   .historical-buttons button {
     width: 6em;
+  }
+
+  .info-container {
+    max-width: 40%;
+  }
+
+  canvas {
+    height: 250px;
+    width: 400px;
+  }
+
+  .state-list {
+    height: 65em;
+  }
+  .state-list a {
+    padding: 2px 3px;
+    width: 10em;
   }
 
 }

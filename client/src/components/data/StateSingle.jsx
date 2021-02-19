@@ -10,10 +10,10 @@ class StateSingle extends React.Component {
                 <div className='info'>
                     <HistoricalChart currentPage={this.props.currentPage} dailyChartData={this.props.dailyChartData} weeklyChartData={this.props.weeklyChartData} monthlyChartData={this.props.monthlyChartData} />
                     <div className='stats'>
-                        <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
+                        {/* <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>
                         <h4>Total recovered: {this.props.usData.recovered.toLocaleString()}</h4>
-                        <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4>
+                        <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4> */}
                     </div>
                 </div> 
             </>

@@ -12,7 +12,7 @@ class StateSingle extends React.Component {
                     <div className='stats'>
                         <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>
-                        <h4>Total recovered: {this.props.usData.recovered ? this.props.usData.recovered.toLocaleString() : "Not Availalbe"}</h4>
+                        <h4>Total recovered: {this.props.usData.recovered ? this.props.usData.recovered.toLocaleString() : "Not Available"}</h4>
                         <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4>
 
                     </div>

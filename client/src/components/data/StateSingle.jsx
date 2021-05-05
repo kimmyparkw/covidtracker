@@ -14,6 +14,7 @@ class StateSingle extends React.Component {
                         <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>
                         <h4>Total recovered: {this.props.usData.recovered ? this.props.usData.recovered.toLocaleString() : "Not Availalbe"}</h4>
                         <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4>
+
                     </div>
                 </div> 
             </>

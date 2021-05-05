@@ -10,10 +10,11 @@ class StateSingle extends React.Component {
                 <div className='info'>
                     <HistoricalChart currentPage={this.props.currentPage} dailyChartData={this.props.dailyChartData} weeklyChartData={this.props.weeklyChartData} monthlyChartData={this.props.monthlyChartData} />
                     <div className='stats'>
-                        {/* <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
+                        <h4>Total positive cases: {this.props.usData.positive.toLocaleString()}</h4>
                         <h4>Total negative cases: {this.props.usData.negative.toLocaleString()}</h4>
-                        <h4>Total recovered: {this.props.usData.recovered.toLocaleString()}</h4>
-                        <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4> */}
+                        <h4>Total recovered: {this.props.usData.recovered ? this.props.usData.recovered.toLocaleString() : "Not Available"}</h4>
+                        <h4>Total tests: {this.props.usData.totalTestResults.toLocaleString()}</h4>
+
                     </div>
                 </div> 
             </>
@@ -52,8 +53,8 @@ class StateSingle extends React.Component {
                     <div className='stats-container-right'>
                         <div className='total-stats'>
                             <h3>Total positive cases: {this.props.singleStateData.positive.toLocaleString()}</h3>
-                            <h3>Total negative cases: {this.props.singleStateData.negative.toLocaleString()}</h3>
-                            <h3>Total recovered: {this.props.singleStateData.recovered ? this.props.singleStateData.recovered.toLocaleString() : ("Not Available")}</h3>
+                            <h3>Total negative cases: {this.props.singleStateData.negative ? this.props.singleStateData.negative.toLocaleString() : "Not Available"}</h3>
+                            <h3>Total recovered: {this.props.singleStateData.recovered ? this.props.singleStateData.recovered.toLocaleString() : "Not Available"}</h3>
                             <h3>Total tests: {this.props.singleStateData.totalTestResults.toLocaleString()}</h3>
                         </div>    
                     </div>
